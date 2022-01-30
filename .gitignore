@@ -1,11 +1,4 @@
-# Created by https://www.toptal.com/developers/gitignore/api/androidstudio
-# Edit at https://www.toptal.com/developers/gitignore?templates=androidstudio
-
-### AndroidStudio ###
-# Covers files to be ignored for android development using Android Studio.
-
-# app key #
-keys.xml
+### https://github.com/github/gitignore/blob/master/Android.gitignore
 
 # Built application files
 *.apk
@@ -22,14 +15,11 @@ keys.xml
 bin/
 gen/
 out/
+release/
 
 # Gradle files
-.gradle
 .gradle/
 build/
-
-# Signing files
-.signing/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -40,91 +30,161 @@ proguard/
 # Log Files
 *.log
 
-# Android Studio
-/*/build/
-/*/local.properties
-/*/out
-/*/*/build
-/*/*/production
-captures/
+# Android Studio Navigation editor temp files
 .navigation/
-*.ipr
-*~
-*.swp
 
-# Keystore files
-*.jks
-*.keystore
+# Android Studio captures folder
+captures/
 
-# Google Services (e.g. APIs or Firebase)
-# google-services.json
-
-# Android Patch
-gen-external-apklibs
+# IntelliJ
+*.iml
+.idea/*
+!.idea/inspectionProfiles/
+!.idea/encodings.xml
+!.idea/codeStyles/
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 
-# NDK
-obj/
+# Freeline
+freeline.py
+freeline/
+freeline_project_description.json
 
-# IntelliJ IDEA
-*.iml
-*.iws
-/out/
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
 
-# User-specific configurations
-.idea/caches/
-.idea/libraries/
-.idea/shelf/
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/.name
-.idea/compiler.xml
-.idea/copyright/profiles_settings.xml
-.idea/encodings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/scopes/scope_settings.xml
-.idea/dictionaries
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
-.idea/datasources.xml
-.idea/dataSources.ids
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
-.idea/assetWizardSettings.xml
-.idea/gradle.xml
-.idea/jarRepositories.xml
-.idea/navEditor.xml
+# Version control
+vcs.xml
 
-# OS-specific files
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
+
+### https://github.com/github/gitignore/blob/master/Gradle.gitignore
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+
+### https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
+
+# General
 .DS_Store
-.DS_Store?
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
 ._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
-ehthumbs.db
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+### https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
+
+# Windows thumbnail cache files
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
 
-# Legacy Eclipse project files
-.classpath
-.project
-.cproject
-.settings/
+# Dump file
+*.stackdump
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Folder config file
+[Dd]esktop.ini
 
-# Package Files #
-*.war
-*.ear
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# virtual machine crash logs (Reference: http://www.java.com/en/download/help/error_hotspot.xml)
-hs_err_pid*
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
 
-## Plugin-specific files:
+# Windows shortcuts
+*.lnk
+
+
+### https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Generated files
+.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# Gradle and Maven with auto-import
+# When using Gradle or Maven with auto-import, you should exclude module files,
+# since they will be recreated, and may cause churn.  Uncomment if using
+# auto-import.
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
+
+# CMake
+cmake-build-*/
+
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
+
+# File-based project format
+*.iws
+
+# IntelliJ
+out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -132,8 +192,8 @@ hs_err_pid*
 # JIRA plugin
 atlassian-ide-plugin.xml
 
-# Mongo Explorer plugin
-.idea/mongoSettings.xml
+# Cursive Clojure plugin
+.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -141,8 +201,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-### AndroidStudio Patch ###
+# Editor-based Rest Client
+.idea/httpRequests
 
-!/gradle/wrapper/gradle-wrapper.jar
-
-# End of https://www.toptal.com/developers/gitignore/api/androidstudio
+# Android studio 3.1+ serialized cache file
+.idea/caches/build_file_checksums.ser
