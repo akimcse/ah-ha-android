@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_navigation"
+    app:startDestination="@id/signFragment">
+
+    <fragment
+        android:id="@+id/signFragment"
+        android:name="com.example.ahha_android.ui.sign.SignFragment"
+        android:label="SignFragment"
+        tools:layout="@layout/fragment_sign">
+
+        <action
+            android:id="@+id/actionSignFragmentToSignPlantFragment"
+            app:destination="@id/signPlantFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signPlantFragment"
+        android:name="com.example.ahha_android.ui.sign.SignPlantFragment"
+        android:label="SignPlantFragment"
+        tools:layout="@layout/fragment_sign_plant" />
+
+</navigation>

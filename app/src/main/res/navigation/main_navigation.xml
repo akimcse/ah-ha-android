@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.ahha_android.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/actionMainFragmentToEditPlantFragment"
+            app:destination="@id/editPlantFragment" />
+
+        <action
+            android:id="@+id/actionMainFragmentToSettingFragment"
+            app:destination="@id/settingFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/editPlantFragment"
+        android:name="com.example.ahha_android.ui.main.EditPlantFragment"
+        android:label="EditPlantFragment"
+        tools:layout="@layout/fragment_edit_plant" />
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.ahha_android.ui.setting.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
+
+        <action
+            android:id="@+id/settingFragmentToSettingNotificationFragment"
+            app:destination="@id/settingNotificationFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingNotificationFragment"
+        android:name="com.example.ahha_android.ui.setting.SettingNotificationFragment"
+        android:label="SettingNotificationFragment"
+        tools:layout="@layout/fragment_setting_notification" />
+
+</navigation>
