@@ -6,6 +6,10 @@
 
     <data>
 
+        <import type="com.example.ahha_android.R" />
+
+        <import type="androidx.navigation.Navigation" />
+
         <variable
             name="viewModel"
             type="com.example.ahha_android.ui.viewmodel.MainViewModel" />
@@ -47,7 +51,8 @@
                     android:id="@+id/imageViewHistory"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_gravity="end" />
+                    android:layout_gravity="end"
+                    android:onClick="@{v -> Navigation.findNavController(v).navigate(R.id.actionMainFragmentToPlantHistoryFragment)}" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -70,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
+            android:onClick="@{v -> Navigation.findNavController(v).navigate(R.id.actionMainFragmentToEditPlantFragment)}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
 

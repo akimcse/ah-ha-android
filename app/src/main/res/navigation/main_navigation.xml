@@ -16,6 +16,10 @@
             app:destination="@id/editPlantFragment" />
 
         <action
+            android:id="@+id/actionMainFragmentToPlantHistoryFragment"
+            app:destination="@id/plantHistoryFragment" />
+
+        <action
             android:id="@+id/actionMainFragmentToSettingFragment"
             app:destination="@id/settingFragment" />
 
@@ -26,6 +30,12 @@
         android:name="com.example.ahha_android.ui.main.EditPlantFragment"
         android:label="EditPlantFragment"
         tools:layout="@layout/fragment_edit_plant" />
+
+    <fragment
+        android:id="@+id/plantHistoryFragment"
+        android:name="com.example.ahha_android.ui.main.PlantHistoryFragment"
+        android:label="PlantHistoryFragment"
+        tools:layout="@layout/fragment_plant_history" />
 
     <fragment
         android:id="@+id/settingFragment"

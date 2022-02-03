@@ -11,4 +11,6 @@
     <string name="sign_plant_choose_character">키울 나무를 골라주세요</string>
     <string name="sing_plant_naming">이름을 지어주세요</string>
 
+    <!-- PlantHistoryFragment -->
+    <string name="plant_history_time_format">%s\n~\n%s</string>
 </resources>
