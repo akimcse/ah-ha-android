@@ -13,4 +13,8 @@
 
     <!-- PlantHistoryFragment -->
     <string name="plant_history_time_format">%s\n~\n%s</string>
+
+    <!-- EditPlantFragment -->
+    <string name="edit_plant_finish">변경 완료</string>
+    <string name="edit_plant_make_character">내 캐릭터 변경</string>
 </resources>

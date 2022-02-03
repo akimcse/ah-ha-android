@@ -57,7 +57,7 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextCharacterName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
