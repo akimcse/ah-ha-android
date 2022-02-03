@@ -1,5 +1,6 @@
 package com.example.ahha_android.ui.sign
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantNameBinding
+import com.example.ahha_android.ui.main.MainActivity
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 
 class SignPlantNameFragment : Fragment() {
@@ -28,5 +30,10 @@ class SignPlantNameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonFinish.setOnClickListener{
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
