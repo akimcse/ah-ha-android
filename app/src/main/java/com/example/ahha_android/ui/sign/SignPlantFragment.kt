@@ -32,7 +32,7 @@ class SignPlantFragment : Fragment() {
 
         navController = Navigation.findNavController(view)
 
-        binding.buttonSignPlantFinish.setOnClickListener{
+        binding.buttonFinish.setOnClickListener{
             navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment)
         }
     }
