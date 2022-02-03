@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_setting">
 
         <action
-            android:id="@+id/settingFragmentToSettingNotificationFragment"
+            android:id="@+id/actionSettingFragmentToSettingNotificationFragment"
             app:destination="@id/settingNotificationFragment" />
 
     </fragment>

@@ -45,7 +45,8 @@
                     android:id="@+id/imageViewSetting"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_gravity="end" />
+                    android:layout_gravity="end"
+                    android:onClick="@{v -> Navigation.findNavController(v).navigate(R.id.actionMainFragmentToSettingFragment)}" />
 
                 <ImageView
                     android:id="@+id/imageViewHistory"
