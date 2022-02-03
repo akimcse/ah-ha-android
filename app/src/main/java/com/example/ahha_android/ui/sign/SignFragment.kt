@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignBinding
+import com.example.ahha_android.ui.viewmodel.SignViewModel
 
 class SignFragment : Fragment() {
     private lateinit var binding: FragmentSignBinding

@@ -1,4 +1,4 @@
-package com.example.ahha_android.ui.sign
+package com.example.ahha_android.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 
