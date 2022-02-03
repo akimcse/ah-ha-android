@@ -21,6 +21,16 @@
         android:id="@+id/signPlantFragment"
         android:name="com.example.ahha_android.ui.sign.SignPlantFragment"
         android:label="SignPlantFragment"
-        tools:layout="@layout/fragment_sign_plant" />
+        tools:layout="@layout/fragment_sign_plant">
+        <action
+            android:id="@+id/actionSignPlantFragmentToSignPlantNameFragment"
+            app:destination="@id/signPlantNameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signPlantNameFragment"
+        android:name="com.example.ahha_android.ui.sign.SignPlantNameFragment"
+        android:label="SignPlantNameFragment"
+        tools:layout="@layout/fragment_sign_plant_name" />
 
 </navigation>
