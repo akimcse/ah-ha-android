@@ -9,5 +9,6 @@
     <string name="sign_plant_finish">선택 완료</string>
     <string name="sign_plant_make_character">내 캐릭터 만들기</string>
     <string name="sign_plant_choose_character">키울 나무를 골라주세요</string>
+    <string name="sing_plant_naming">이름을 지어주세요</string>
 
 </resources>
