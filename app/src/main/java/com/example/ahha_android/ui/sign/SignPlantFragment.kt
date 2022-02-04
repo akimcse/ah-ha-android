@@ -87,12 +87,6 @@ class SignPlantFragment : Fragment() {
                     3 -> {
                         binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
                     }
-                    4 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_background)
-                    }
-                    5 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
-                    }
                 }
 
                 if(position!=0){
