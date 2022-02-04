@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentMainBinding
 import com.example.ahha_android.ui.viewmodel.MainViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
@@ -26,6 +29,18 @@ class MainFragment : Fragment() {
         addObserver()
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            viewModel.apply {
+                fetchUser()
+                fetchMailCount()
+                fetchPlant()
+            }
+        }
     }
 
     private fun addObserver() {
