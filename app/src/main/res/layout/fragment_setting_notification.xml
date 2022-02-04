@@ -9,6 +9,10 @@
         <import type="com.example.ahha_android.R" />
 
         <import type="androidx.navigation.Navigation" />
+
+        <variable
+            name="viewModel"
+            type="com.example.ahha_android.ui.viewmodel.SettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -99,6 +103,7 @@
                 android:id="@+id/buttonMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.reduceNotificationCount()}"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
                 android:text="-"
@@ -115,7 +120,8 @@
                 android:gravity="center"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
-                android:text="50"
+                android:onTextChanged="@{viewModel::onNotificationCountTextChanged}"
+                android:text="@{viewModel.notificationCount.toString()}"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -123,6 +129,7 @@
                 android:id="@+id/buttonPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.increaseNotificationCount()}"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
                 android:text="+"
