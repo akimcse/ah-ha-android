@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="45dp"
             android:layout_marginTop="43dp"
-            android:hint="@{viewModel.plantName}"
+            android:text="@{viewModel.plantName}"
             android:textColorHint="@color/grey2"
             android:textAlignment="center"
             android:background="@null"

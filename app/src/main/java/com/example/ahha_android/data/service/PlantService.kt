@@ -3,16 +3,13 @@ package com.example.ahha_android.data.service
 import com.example.ahha_android.data.model.request.RequestPlantCreateData
 import com.example.ahha_android.data.model.request.RequestPlantUpdateData
 import com.example.ahha_android.data.model.response.ResponsePlantCreateData
-import com.example.ahha_android.data.model.response.ResponsePlantData
 import com.example.ahha_android.data.model.response.ResponsePlantUpdateData
 import retrofit2.http.*
+import com.example.ahha_android.data.response.ResponsePlantData
+import retrofit2.http.GET
+import retrofit2.http.Header
 
 interface PlantService {
-    @GET("plant")
-    suspend fun getPlantInfo(
-        @Header("Authorization") token : String
-    ): ResponsePlantData
-
     @POST("plant")
     suspend fun createPlant(
         @Header("Authorization") token: String,
@@ -24,4 +21,9 @@ interface PlantService {
         @Header("Authorization") token: String,
         @Body body: RequestPlantUpdateData
     ): ResponsePlantUpdateData
+
+    @GET("plant")
+    suspend fun getPlant(
+        @Header("Authorization") token: String
+    ): ResponsePlantData
 }

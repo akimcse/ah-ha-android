@@ -127,7 +127,7 @@ class EditPlantFragment : Fragment() {
 
         viewModel.plantKind.observe(viewLifecycleOwner) {
             viewModel.plantLevel.value?.let { level ->
-                binding.imageViewCharacter.setDrawableImage(it.getPlantImage(level))
+                binding.imageViewCharacter.setDrawableImage(it.getPlantImageByLevel(level))
             }
         }
     }

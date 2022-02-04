@@ -10,6 +10,7 @@ import com.example.ahha_android.R
 import com.example.ahha_android.data.model.request.RequestPlantUpdateData
 import com.example.ahha_android.data.model.response.Data
 import com.example.ahha_android.data.model.response.ResponsePlantUpdateData
+import com.example.ahha_android.data.response.PlantData
 import com.example.ahha_android.data.service.RetrofitBuilder
 import com.example.ahha_android.data.type.Plant
 import com.example.ahha_android.data.vo.SignPlantData
@@ -26,7 +27,7 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
     val newPlant : LiveData<ResponsePlantUpdateData>
         get() = _newPlant
 
-    private val _plantInfo = MutableLiveData<Data>()
+    private val _plantInfo = MutableLiveData<PlantData>()
 
     private val _plantName = MutableLiveData<String>()
     val plantName: LiveData<String> = _plantName
@@ -47,7 +48,7 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun fetchPlant() = viewModelScope.launch(Dispatchers.IO) {
         try {
-            val response = RetrofitBuilder.plantService.getPlantInfo(token).data
+            val response = RetrofitBuilder.plantService.getPlant(token).data
             _plantInfo.postValue(response)
             _plantName.postValue(response.name)
             _plantLevel.postValue(response.level)

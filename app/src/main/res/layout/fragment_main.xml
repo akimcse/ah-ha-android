@@ -102,7 +102,7 @@
                 android:layout_marginBottom="32dp"
                 android:fontFamily="@font/apple_sd_gothic_neo_bold"
                 android:includeFontPadding="false"
-                android:text="캐릭터 이름"
+                android:text="@{viewModel.plantName}"
                 android:textColor="@color/grey2"
                 android:textSize="20dp"
                 tools:text="캐릭터 이름" />
@@ -131,12 +131,11 @@
             android:layout_marginBottom="2dp"
             android:fontFamily="@font/apple_sd_gothic_neo_bold"
             android:includeFontPadding="false"
-            android:text="5그루"
             android:textColor="@color/grey5"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="@id/textViewPlantNumberTitle"
             app:layout_constraintStart_toEndOf="@id/textViewPlantNumberTitle"
-            app:layout_constraintTop_toTopOf="@+id/textViewPlantNumberTitle" />
+            app:layout_constraintTop_toTopOf="@id/textViewPlantNumberTitle" />
 
         <TextView
             android:id="@+id/TextViewInfo"
@@ -161,7 +160,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/progress_bar_rounded_corner"
-            android:progress="75"
+            android:progress="@{viewModel.plantScore}"
             android:progressDrawable="@drawable/progress_bar_rounded_corner"
             app:layout_constraintTop_toBottomOf="@id/TextViewInfo" />
 
@@ -203,7 +202,6 @@
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/apple_sd_gothic_neo_extrabold"
                     android:includeFontPadding="false"
-                    android:text="@{viewModel.mailCount.toString()}"
                     android:textColor="@{viewModel.mailCount >= viewModel.mailCountLimit ? @color/white : @color/ultramarine}"
                     android:textSize="32dp" />
 
@@ -219,6 +217,7 @@
                 android:fontFamily="@font/apple_sd_gothic_neo_bold"
                 android:gravity="center"
                 android:includeFontPadding="false"
+                android:onClick="@{() -> viewModel.goToGmail()}"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="16dp"
                 android:text="@string/main_mail_box_manage"
