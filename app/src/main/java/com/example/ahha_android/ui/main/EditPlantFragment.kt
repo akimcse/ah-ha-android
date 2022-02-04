@@ -1,6 +1,7 @@
 package com.example.ahha_android.ui.main
 
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ class EditPlantFragment : Fragment() {
     private lateinit var binding: FragmentEditPlantBinding
     private val viewModel: EditPlantViewModel by viewModels()
     lateinit var navController: NavController
+    lateinit var kind: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +45,7 @@ class EditPlantFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
         viewModel.setCharacterList()
+        viewModel.fetchPlant()
 
         setCharacterAdapter()
         setCharacterObserve()
@@ -91,11 +94,25 @@ class EditPlantFragment : Fragment() {
                     }
                 }
 
+                binding.buttonFinish.setOnClickListener {
+                    navController.popBackStack()
+                    val name = binding.editTextCharacterName.text
+                    when (position + 1) {
+                        1 -> {
+                            kind = "GREENONION"
+                        }
+                        2 -> {
+                            kind = "TOMATO"
+                        }
+                        3 -> {
+                            kind = "BROCCOLI"
+                        }
+                    }
+                    viewModel.changePlantInfo(name, kind)
+                }
+
                 if (position != 0) {
                     binding.buttonFinish.isActivated = true
-                    binding.buttonFinish.setOnClickListener {
-                        navController.popBackStack()
-                    }
                 }
             }
         })

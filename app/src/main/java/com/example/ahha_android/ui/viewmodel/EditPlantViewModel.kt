@@ -1,12 +1,15 @@
 package com.example.ahha_android.ui.viewmodel
 
 import android.app.Application
+import android.text.Editable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ahha_android.R
+import com.example.ahha_android.data.model.request.RequestPlantUpdateData
 import com.example.ahha_android.data.model.response.Data
+import com.example.ahha_android.data.model.response.ResponsePlantUpdateData
 import com.example.ahha_android.data.service.RetrofitBuilder
 import com.example.ahha_android.data.type.Plant
 import com.example.ahha_android.data.vo.SignPlantData
@@ -18,6 +21,10 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
     private val _characterList = MutableLiveData<List<SignPlantData>>()
     val characterList : LiveData<List<SignPlantData>>
         get() = _characterList
+
+    private val _newPlant = MutableLiveData<ResponsePlantUpdateData>()
+    val newPlant : LiveData<ResponsePlantUpdateData>
+        get() = _newPlant
 
     private val _plantInfo = MutableLiveData<Data>()
 
@@ -38,13 +45,7 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            fetchPlant()
-        }
-    }
-
-    private suspend fun fetchPlant() {
+    fun fetchPlant() = viewModelScope.launch(Dispatchers.IO) {
         try {
             val response = RetrofitBuilder.plantService.getPlantInfo(token).data
             _plantInfo.postValue(response)
@@ -55,6 +56,15 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
             _ordinalNumber.postValue(response.ordinalNumber)
         } catch (e: HttpException) {
             e.printStackTrace()
+        }
+    }
+
+    fun changePlantInfo(name:Editable, kind:String) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            _newPlant.postValue(
+                RetrofitBuilder.plantService.editPlant(token, RequestPlantUpdateData(name.toString(), kind))
+            )
+        } catch (e: HttpException){
         }
     }
 
