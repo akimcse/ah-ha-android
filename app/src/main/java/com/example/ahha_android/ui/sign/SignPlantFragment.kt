@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -23,6 +24,7 @@ class SignPlantFragment : Fragment() {
     private val viewModel: SignViewModel by viewModels()
     lateinit var navController: NavController
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,12 +39,7 @@ class SignPlantFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
-
         viewModel.setCharacterList()
-
-        binding.imageViewBack.setOnClickListener{
-
-        }
 
         setCharacterAdapter()
         setCharacterObserve()
@@ -87,19 +84,16 @@ class SignPlantFragment : Fragment() {
                     3 -> {
                         binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
                     }
-                    4 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_background)
-                    }
-                    5 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
-                    }
                 }
 
+                // 스크롤하지 않으면 색상은 변하지 않지만 버튼 클릭은 됨
                 if(position!=0){
                     binding.buttonFinish.isActivated = true
-                    binding.buttonFinish.setOnClickListener{
-                        navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment)
-                    }
+                }
+
+                binding.buttonFinish.setOnClickListener{
+                    val bundle = bundleOf("characterNum" to position+1)
+                    navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment,bundle)
                 }
             }
         })

@@ -18,8 +18,6 @@ class SignViewModel(application: Application) : AndroidViewModel(application) {
             SignPlantData("브로콜리", R.drawable.ic_launcher_background),
             SignPlantData("토마토", R.drawable.ic_launcher_background),
             SignPlantData("대파", R.drawable.ic_launcher_background),
-            SignPlantData("당근", R.drawable.ic_launcher_background),
-            SignPlantData("양파", R.drawable.ic_launcher_background)
         )
     }
 }
