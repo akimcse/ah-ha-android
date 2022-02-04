@@ -11,6 +11,15 @@
     <string name="sign_plant_choose_character">키울 나무를 골라주세요</string>
     <string name="sing_plant_naming">이름을 지어주세요</string>
 
+    <!-- MainFragment -->
+    <string name="main_title">“Saving the earth”</string>
+    <string name="main_plant_number_title">키운 나무 수</string>
+    <string name="main_plant_number_format">%d그루</string>
+    <string name="main_mail_count_title">현재 메일 개수</string>
+    <string name="main_mail_count_format">%d개</string>
+    <string name="main_mail_box_manage">메일함 관리</string>
+    <string name="main_info_icon">i</string>
+
     <!-- PlantHistoryFragment -->
     <string name="plant_history_time_format">%s\n~\n%s</string>
 
