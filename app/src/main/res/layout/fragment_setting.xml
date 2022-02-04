@@ -101,7 +101,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"
+                android:textOff="@string/setting_switch_off"
+                android:textOn="@string/setting_switch_on"
+                android:thumb="@drawable/switch_thumb_selector"
+                app:showText="true"
+                app:switchMinWidth="90dp"
+                app:switchTextAppearance="@style/SwitchTextAppearance"
+                app:track="@drawable/switch_track_selector" />
 
         </LinearLayout>
 
@@ -151,9 +158,9 @@
                 android:id="@+id/imageViewMailNotification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_arrow_forward"
-                android:layout_gravity="center_vertical" />
+                android:src="@drawable/ic_arrow_forward" />
 
         </LinearLayout>
 
