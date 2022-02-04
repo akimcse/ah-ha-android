@@ -7,7 +7,7 @@ enum class Plant {
     TOMATO,
     BROCCOLI;
 
-    fun getPlantImage(level: Int): Int {
+    fun getPlantImageByLevel(level: Int): Int {
         return when (this) {
             GREENONION -> {
                 when (level) {
@@ -36,6 +36,22 @@ enum class Plant {
                     else -> R.drawable.ic_launcher_foreground
                 }
             }
+        }
+    }
+
+    fun getPlantFrontImage(): Int {
+        return when (this) {
+            GREENONION -> R.drawable.ic_launcher_foreground
+            TOMATO -> R.drawable.ic_launcher_foreground
+            BROCCOLI -> R.drawable.ic_launcher_foreground
+        }
+    }
+
+    fun getPlantBackImage(): Int {
+        return when (this) {
+            GREENONION -> R.drawable.ic_launcher_background
+            TOMATO -> R.drawable.ic_launcher_background
+            BROCCOLI -> R.drawable.ic_launcher_background
         }
     }
 }

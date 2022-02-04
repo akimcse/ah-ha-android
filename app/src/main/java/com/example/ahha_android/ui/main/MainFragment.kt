@@ -39,7 +39,7 @@ class MainFragment : Fragment() {
 
         viewModel.plantKind.observe(viewLifecycleOwner) {
             viewModel.plantLevel.value?.let { level ->
-                binding.imageViewPlant.setDrawableImage(it.getPlantImage(level))
+                binding.imageViewPlant.setDrawableImage(it.getPlantImageByLevel(level))
             }
         }
     }
