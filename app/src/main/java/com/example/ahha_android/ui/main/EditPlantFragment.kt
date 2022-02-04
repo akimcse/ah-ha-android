@@ -1,6 +1,7 @@
 package com.example.ahha_android.ui.main
 
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,14 +18,16 @@ import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentEditPlantBinding
 import com.example.ahha_android.databinding.FragmentSignPlantBinding
 import com.example.ahha_android.ui.sign.adapter.SignPlantAdapter
+import com.example.ahha_android.ui.viewmodel.EditPlantViewModel
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
 import java.lang.Math.abs
 
 class EditPlantFragment : Fragment() {
     private lateinit var binding: FragmentEditPlantBinding
-    private val viewModel: SignViewModel by viewModels()
+    private val viewModel: EditPlantViewModel by viewModels()
     lateinit var navController: NavController
+    lateinit var kind: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +45,7 @@ class EditPlantFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
         viewModel.setCharacterList()
+        viewModel.fetchPlant()
 
         setCharacterAdapter()
         setCharacterObserve()
@@ -71,13 +75,14 @@ class EditPlantFragment : Fragment() {
                 page.translationX = myOffset
             }
         }
+
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             // Paging 완료되면 호출
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 Log.d("ViewPagerFragment", "Page ${position + 1}")
 
-                when(position+1){
+                when (position + 1) {
                     1 -> {
                         binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
                     }
@@ -89,11 +94,25 @@ class EditPlantFragment : Fragment() {
                     }
                 }
 
-                if(position!=0){
-                    binding.buttonFinish.isActivated = true
-                    binding.buttonFinish.setOnClickListener{
-                        navController.popBackStack()
+                binding.buttonFinish.setOnClickListener {
+                    navController.popBackStack()
+                    val name = binding.editTextCharacterName.text
+                    when (position + 1) {
+                        1 -> {
+                            kind = "GREENONION"
+                        }
+                        2 -> {
+                            kind = "TOMATO"
+                        }
+                        3 -> {
+                            kind = "BROCCOLI"
+                        }
                     }
+                    viewModel.changePlantInfo(name, kind)
+                }
+
+                if (position != 0) {
+                    binding.buttonFinish.isActivated = true
                 }
             }
         })
@@ -103,6 +122,12 @@ class EditPlantFragment : Fragment() {
         viewModel.characterList.observe(viewLifecycleOwner) { characterList ->
             with(binding.viewPager.adapter as SignPlantAdapter) {
                 setCharacter(characterList)
+            }
+        }
+
+        viewModel.plantKind.observe(viewLifecycleOwner) {
+            viewModel.plantLevel.value?.let { level ->
+                binding.imageViewCharacter.setDrawableImage(it.getPlantImageByLevel(level))
             }
         }
     }
