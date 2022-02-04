@@ -8,6 +8,8 @@
         <variable
             name="viewModel"
             type="com.example.ahha_android.ui.viewmodel.SignViewModel" />
+        <import type="androidx.navigation.Navigation" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,9 +20,10 @@
             android:id="@+id/imageViewBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
-            android:src="?attr/homeAsUpIndicator"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="55dp"
+            android:src="@drawable/ic_back"
+            android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,6 +32,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_plant_make_character"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,9 +44,8 @@
             android:id="@+id/imageViewCharacter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSignPlantNameTitle"
             tools:src="@tools:sample/avatars" />
@@ -49,8 +54,11 @@
             android:id="@+id/textViewNaming"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/grey3"
             android:text="@string/sing_plant_naming"
+            android:textSize="16sp"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewCharacter" />
@@ -60,20 +68,39 @@
             android:id="@+id/editTextCharacterName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
+            android:layout_marginHorizontal="45dp"
             android:layout_marginTop="30dp"
             android:inputType="textPersonName"
+            android:hint="@string/sing_plant_name_input"
+            android:textColorHint="@color/grey2"
+            android:textAlignment="center"
+            android:background="@null"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewNaming" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/grey2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextCharacterName"
+            app:layout_constraintStart_toStartOf="@+id/editTextCharacterName"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCharacterName" />
 
         <Button
             android:id="@+id/buttonFinish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="30dp"
             android:text="@string/sign_plant_finish"
+            android:textSize="20sp"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:background="@drawable/bg_button_selector"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="36dp"
+            android:textColor="@drawable/color_text_selector"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
