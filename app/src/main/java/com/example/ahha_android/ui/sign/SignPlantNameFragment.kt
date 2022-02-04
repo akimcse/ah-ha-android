@@ -19,6 +19,7 @@ import com.example.ahha_android.util.BindingAdapter.setDrawableImage
 class SignPlantNameFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantNameBinding
     private val viewModel: SignViewModel by viewModels()
+    lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +60,8 @@ class SignPlantNameFragment : Fragment() {
         binding.buttonFinish.setOnClickListener{
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
+            // 조금 느리더라도 로그인부분을 백스택에서 빼는 것이 나은지, 아니면 시연 영상에서는 가볍게 그냥 둘지?
+            //navController.popBackStack()
         }
         //if(binding.editTextCharacterName.text.isNotBlank()){ }
     }

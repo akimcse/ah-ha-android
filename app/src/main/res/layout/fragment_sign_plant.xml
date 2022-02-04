@@ -85,12 +85,14 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
+        <TextView
             android:id="@+id/buttonFinish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/sign_plant_finish"
             android:textSize="20sp"
+            android:textAlignment="center"
+            android:paddingVertical="17dp"
             android:fontFamily="@font/apple_sd_gothic_neo_regular"
             android:background="@drawable/bg_button_selector"
             android:layout_marginHorizontal="20dp"
