@@ -203,7 +203,7 @@
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/apple_sd_gothic_neo_extrabold"
                     android:includeFontPadding="false"
-                    android:text="@{viewModel.mailCount}"
+                    android:text="@{viewModel.mailCount.toString()}"
                     android:textColor="@{viewModel.mailCount >= viewModel.mailCountLimit ? @color/white : @color/ultramarine}"
                     android:textSize="32dp" />
 

@@ -26,4 +26,13 @@
     <!-- EditPlantFragment -->
     <string name="edit_plant_finish">변경 완료</string>
     <string name="edit_plant_make_character">내 캐릭터 변경</string>
+    
+    <!-- SettingFragment -->
+    <string name="setting_title">설정</string>
+    <string name="setting_info_notification_menu_title">정보성 푸시 알림</string>
+    <string name="setting_info_notification_menu_description">데이터 환경오염을 막는 방법 알려드려요!</string>
+    <string name="setting_mail_notification_menu_title">이메일 삭제 알림</string>
+    <string name="setting_mail_notification_menu_description">이메일 삭제 알림 개수 설정</string>
+    <string name="setting_switch_on">on</string>
+    <string name="setting_switch_off">off</string>
 </resources>

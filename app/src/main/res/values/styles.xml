@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Switch TextAppearance -->
+    <style name="SwitchTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@drawable/switch_text_selector</item>
+        <item name="android:fontFamily">@font/apple_sd_gothic_neo_regular</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+</resources>
