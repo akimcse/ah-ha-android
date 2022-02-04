@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.ahha_android.ui.viewmodel.SignViewModel" />
+            type="com.example.ahha_android.ui.viewmodel.EditPlantViewModel" />
         <import type="androidx.navigation.Navigation" />
     </data>
 
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="45dp"
             android:layout_marginTop="43dp"
-            android:hint="@string/sing_plant_name_input"
+            android:hint="@{viewModel.plantName}"
             android:textColorHint="@color/grey2"
             android:textAlignment="center"
             android:background="@null"
