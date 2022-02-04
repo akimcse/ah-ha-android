@@ -20,6 +20,7 @@ class SignPlantNameFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantNameBinding
     private val viewModel: SignViewModel by viewModels()
     lateinit var navController: NavController
+    lateinit var kind: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +61,24 @@ class SignPlantNameFragment : Fragment() {
         binding.buttonFinish.setOnClickListener{
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
+            val characterNum = arguments?.getInt("characterNum")
+
+            val name = binding.editTextCharacterName.text
+            if (characterNum != null) {
+                when (characterNum) {
+                    1 -> {
+                        kind = "GREENONION"
+                    }
+                    2 -> {
+                        kind = "TOMATO"
+                    }
+                    3 -> {
+                        kind = "BROCCOLI"
+                    }
+                }
+            }
+            viewModel.createPlant(name, kind)
+
             // 조금 느리더라도 로그인부분을 백스택에서 빼는 것이 나은지, 아니면 시연 영상에서는 가볍게 그냥 둘지?
             //navController.popBackStack()
         }

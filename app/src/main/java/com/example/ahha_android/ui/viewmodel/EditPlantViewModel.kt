@@ -72,9 +72,9 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
     // 다 자란 기본 캐릭터 데이터
     fun setCharacterList() {
         _characterList.value = mutableListOf(
-            SignPlantData("브로콜리", R.drawable.ic_launcher_background),
-            SignPlantData("토마토", R.drawable.ic_launcher_background),
             SignPlantData("대파", R.drawable.ic_launcher_background),
+            SignPlantData("토마토", R.drawable.ic_launcher_background),
+            SignPlantData("브로콜리", R.drawable.ic_launcher_background),
         )
     }
 }
