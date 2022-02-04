@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_plant_make_character"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:fontFamily="@font/apple_sd_gothic_neo_regular"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
@@ -57,7 +57,7 @@
             android:layout_marginTop="32dp"
             android:textColor="@color/grey3"
             android:text="@string/sing_plant_naming"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:fontFamily="@font/apple_sd_gothic_neo_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +89,14 @@
             app:layout_constraintStart_toStartOf="@+id/editTextCharacterName"
             app:layout_constraintTop_toBottomOf="@+id/editTextCharacterName" />
 
-        <Button
+        <TextView
             android:id="@+id/buttonFinish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/sign_plant_finish"
-            android:textSize="20sp"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:paddingVertical="17dp"
             android:fontFamily="@font/apple_sd_gothic_neo_regular"
             android:background="@drawable/bg_button_selector"
             android:layout_marginHorizontal="20dp"
