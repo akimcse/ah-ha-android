@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="20dp">
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="8dp">
 
-        <TextView
-            android:id="@+id/textViewPlantName"
+        <ImageView
+            android:id="@+id/imageViewPlant"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/lime"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:textColor="#838383"
-            android:textSize="14dp"
-            tools:text="캐릭터 이름" />
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textViewPlantTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="14dp"
-            tools:text="2021.12.08\n~\n2022.01.31" />
+            <TextView
+                android:id="@+id/textViewPlantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="43dp"
+                android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/grey_title"
+                android:textSize="13dp"
+                android:visibility="invisible"
+                tools:text="캐릭터 이름" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textViewPlantTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="44dp"
+                android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/grey5"
+                android:textSize="16dp"
+                android:visibility="invisible"
+                tools:text="2021.12.08\n~\n2022.01.31" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
