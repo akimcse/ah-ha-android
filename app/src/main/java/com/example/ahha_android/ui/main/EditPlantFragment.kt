@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ import com.example.ahha_android.databinding.FragmentEditPlantBinding
 import com.example.ahha_android.databinding.FragmentSignPlantBinding
 import com.example.ahha_android.ui.sign.adapter.SignPlantAdapter
 import com.example.ahha_android.ui.viewmodel.SignViewModel
+import com.example.ahha_android.util.BindingAdapter.setDrawableImage
 import java.lang.Math.abs
 
 class EditPlantFragment : Fragment() {
@@ -43,10 +45,6 @@ class EditPlantFragment : Fragment() {
 
         setCharacterAdapter()
         setCharacterObserve()
-
-        binding.buttonFinish.setOnClickListener {
-            // 변경 완료 코드
-        }
     }
 
     private fun setCharacterAdapter() {
@@ -78,6 +76,25 @@ class EditPlantFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 Log.d("ViewPagerFragment", "Page ${position + 1}")
+
+                when(position+1){
+                    1 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
+                    }
+                    2 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_background)
+                    }
+                    3 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
+                    }
+                }
+
+                if(position!=0){
+                    binding.buttonFinish.isActivated = true
+                    binding.buttonFinish.setOnClickListener{
+                        navController.popBackStack()
+                    }
+                }
             }
         })
     }
