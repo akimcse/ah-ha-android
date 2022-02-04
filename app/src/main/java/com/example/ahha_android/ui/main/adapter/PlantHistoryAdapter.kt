@@ -8,8 +8,10 @@ import android.view.animation.AnimationUtils
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ahha_android.R
+import com.example.ahha_android.data.type.Plant
 import com.example.ahha_android.data.vo.PlantHistoryData
 import com.example.ahha_android.databinding.ItemPlantHistoryBinding
+import com.example.ahha_android.util.BindingAdapter.setDrawableImage
 
 class PlantHistoryAdapter : RecyclerView.Adapter<PlantHistoryViewHolder>() {
     var data = listOf<PlantHistoryData>()
@@ -34,11 +36,14 @@ class PlantHistoryViewHolder(
     private lateinit var animationToMiddle: Animation
     private lateinit var animationFromMiddle: Animation
     private var isFrontOfCardShowing = true
+    private lateinit var plantKind: Plant
 
     fun bind(data: PlantHistoryData) {
         binding.textViewPlantName.text = data.name
         binding.textViewPlantTime.text =
             context.getString(R.string.plant_history_time_format, data.startTime, data.finishTime)
+        binding.imageViewPlant.setDrawableImage(data.kind.getPlantFrontImage())
+        plantKind = data.kind
 
         animationToMiddle = AnimationUtils.loadAnimation(context, R.anim.to_middle)
         animationFromMiddle = AnimationUtils.loadAnimation(context, R.anim.from_middle)
@@ -60,13 +65,13 @@ class PlantHistoryViewHolder(
                 binding.apply {
                     textViewPlantName.isInvisible = false
                     textViewPlantTime.isInvisible = false
-                    imageViewPlant.setBackgroundColor(context.resources.getColor(R.color.grey2))
+                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantBackImage())
                 }
             } else {
                 binding.apply {
                     textViewPlantName.isInvisible = true
                     textViewPlantTime.isInvisible = true
-                    imageViewPlant.setBackgroundColor(context.resources.getColor(R.color.lime))
+                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantFrontImage())
                 }
             }
             binding.apply {
