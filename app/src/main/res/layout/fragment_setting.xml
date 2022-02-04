@@ -20,13 +20,14 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
             android:background="@android:color/transparent"
             app:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="37dp"
                 android:background="@android:color/transparent"
                 app:contentInsetStart="0dp">
 
@@ -34,16 +35,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="16dp"
-                    tools:text="설정" />
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/setting_title"
+                    android:textColor="@color/grey5"
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/imageViewClose"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}" />
+                    android:layout_marginEnd="10dp"
+                    android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_close" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -54,7 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_setting_menu"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -67,16 +74,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    tools:text="정보성 푸시 알림" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/setting_info_notification_menu_title"
+                    android:textColor="@color/grey4"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#A1A1A1"
-                    android:textSize="12dp"
-                    tools:text="데이터 환경오염을 막는 여러 방법 소개" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/setting_info_notification_menu_description"
+                    android:textColor="@color/grey3"
+                    android:textSize="13dp" />
 
             </LinearLayout>
 
@@ -84,7 +100,8 @@
                 android:id="@+id/switchInfoNotification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp" />
 
         </LinearLayout>
 
@@ -93,7 +110,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/background_setting_menu"
             android:onClick="@{v -> Navigation.findNavController(v).navigate(R.id.actionSettingFragmentToSettingNotificationFragment)}"
             android:orientation="horizontal">
 
@@ -107,23 +125,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    tools:text="이메일 삭제 알림" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/setting_mail_notification_menu_title"
+                    android:textColor="@color/grey4"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#A1A1A1"
-                    android:textSize="12dp"
-                    tools:text="이메일 삭제 알림 개수 설정" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/setting_mail_notification_menu_description"
+                    android:textColor="@color/grey3"
+                    android:textSize="13dp" />
 
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/imageViewMailNotification"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_arrow_forward"
                 android:layout_gravity="center_vertical" />
 
         </LinearLayout>
