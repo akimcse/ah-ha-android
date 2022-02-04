@@ -15,6 +15,7 @@ import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantBinding
 import com.example.ahha_android.ui.sign.adapter.SignPlantAdapter
 import com.example.ahha_android.ui.viewmodel.SignViewModel
+import com.example.ahha_android.util.BindingAdapter.setDrawableImage
 import java.lang.Math.abs
 
 class SignPlantFragment : Fragment() {
@@ -39,12 +40,12 @@ class SignPlantFragment : Fragment() {
 
         viewModel.setCharacterList()
 
+        binding.imageViewBack.setOnClickListener{
+
+        }
+
         setCharacterAdapter()
         setCharacterObserve()
-
-        binding.buttonFinish.setOnClickListener{
-            navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment)
-        }
     }
 
     private fun setCharacterAdapter() {
@@ -75,6 +76,31 @@ class SignPlantFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 Log.d("ViewPagerFragment", "Page ${position+1}")
+
+                when(position+1){
+                    1 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
+                    }
+                    2 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_background)
+                    }
+                    3 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
+                    }
+                    4 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_background)
+                    }
+                    5 -> {
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
+                    }
+                }
+
+                if(position!=0){
+                    binding.buttonFinish.isActivated = true
+                    binding.buttonFinish.setOnClickListener{
+                        navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment)
+                    }
+                }
             }
         })
     }
