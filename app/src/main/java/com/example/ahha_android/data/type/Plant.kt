@@ -11,47 +11,39 @@ enum class Plant {
         return when (this) {
             GREENONION -> {
                 when (level) {
-                    1 -> R.drawable.ic_launcher_foreground
-                    2 -> R.drawable.ic_launcher_foreground
-                    3 -> R.drawable.ic_launcher_foreground
-                    4 -> R.drawable.ic_launcher_foreground
-                    else -> R.drawable.ic_launcher_foreground
+                    1 -> R.drawable.ic_green_onion_level_1
+                    2 -> R.drawable.ic_green_onion_level_2
+                    3 -> R.drawable.ic_green_onion_level_3
+                    4 -> R.drawable.ic_green_onion_level_4
+                    else -> R.drawable.ic_green_onion_level_5
                 }
             }
             TOMATO -> {
                 when (level) {
-                    1 -> R.drawable.ic_launcher_foreground
-                    2 -> R.drawable.ic_launcher_foreground
-                    3 -> R.drawable.ic_launcher_foreground
-                    4 -> R.drawable.ic_launcher_foreground
-                    else -> R.drawable.ic_launcher_foreground
+                    1 -> R.drawable.ic_tomato_level_1
+                    2 -> R.drawable.ic_tomato_level_2
+                    3 -> R.drawable.ic_tomato_level_3
+                    4 -> R.drawable.ic_tomato_level_4
+                    else -> R.drawable.ic_tomato_level_5
                 }
             }
             BROCCOLI -> {
                 when (level) {
-                    1 -> R.drawable.ic_launcher_foreground
-                    2 -> R.drawable.ic_launcher_foreground
-                    3 -> R.drawable.ic_launcher_foreground
-                    4 -> R.drawable.ic_launcher_foreground
-                    else -> R.drawable.ic_launcher_foreground
+                    1 -> R.drawable.ic_broccoli_level_1
+                    2 -> R.drawable.ic_broccoli_level_2
+                    3 -> R.drawable.ic_broccoli_level_3
+                    4 -> R.drawable.ic_broccoli_level_4
+                    else -> R.drawable.ic_broccoli_level_5
                 }
             }
         }
     }
 
-    fun getPlantFrontImage(): Int {
+    fun getPlantImage(): Int {
         return when (this) {
-            GREENONION -> R.drawable.ic_launcher_foreground
-            TOMATO -> R.drawable.ic_launcher_foreground
-            BROCCOLI -> R.drawable.ic_launcher_foreground
-        }
-    }
-
-    fun getPlantBackImage(): Int {
-        return when (this) {
-            GREENONION -> R.drawable.ic_launcher_background
-            TOMATO -> R.drawable.ic_launcher_background
-            BROCCOLI -> R.drawable.ic_launcher_background
+            GREENONION -> R.drawable.ic_green_onion_level_5
+            TOMATO -> R.drawable.ic_tomato_level_5
+            BROCCOLI -> R.drawable.ic_broccoli_level_5
         }
     }
 }

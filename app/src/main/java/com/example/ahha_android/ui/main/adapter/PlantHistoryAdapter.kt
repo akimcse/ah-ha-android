@@ -42,7 +42,7 @@ class PlantHistoryViewHolder(
         binding.textViewPlantName.text = data.name
         binding.textViewPlantTime.text =
             context.getString(R.string.plant_history_time_format, data.startTime, data.finishTime)
-        binding.imageViewPlant.setDrawableImage(data.kind.getPlantFrontImage())
+        binding.imageViewPlant.setDrawableImage(data.kind.getPlantImage())
         plantKind = data.kind
 
         animationToMiddle = AnimationUtils.loadAnimation(context, R.anim.to_middle)
@@ -65,13 +65,13 @@ class PlantHistoryViewHolder(
                 binding.apply {
                     textViewPlantName.isInvisible = false
                     textViewPlantTime.isInvisible = false
-                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantBackImage())
+//                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantBackImage())
                 }
             } else {
                 binding.apply {
                     textViewPlantName.isInvisible = true
                     textViewPlantTime.isInvisible = true
-                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantFrontImage())
+                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantImage())
                 }
             }
             binding.apply {
