@@ -22,6 +22,7 @@
     <!-- MainFragment -->
     <color name="grey_info">#A5A5A5</color>
     <color name="grey_info_icon">#E5E5E5</color>
+    <color name="brown">#9C5C42</color>
 
     <!-- SettingNotificationFragment -->
     <color name="grey_title">#565656</color>
