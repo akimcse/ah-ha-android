@@ -76,13 +76,13 @@ class SignPlantFragment : Fragment() {
 
                 when(position+1){
                     1 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_green_onion_level_5)
                     }
                     2 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_background)
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_tomato_level_5)
                     }
                     3 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_launcher_foreground)
+                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_broccoli_level_5)
                     }
                 }
 
