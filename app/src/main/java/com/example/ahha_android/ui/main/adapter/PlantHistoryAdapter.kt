@@ -1,5 +1,6 @@
 package com.example.ahha_android.ui.main.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -65,13 +66,14 @@ class PlantHistoryViewHolder(
                 binding.apply {
                     textViewPlantName.isInvisible = false
                     textViewPlantTime.isInvisible = false
-//                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantBackImage())
+                    imageViewPlant.isInvisible = true
                 }
             } else {
                 binding.apply {
                     textViewPlantName.isInvisible = true
                     textViewPlantTime.isInvisible = true
-                    binding.imageViewPlant.setDrawableImage(plantKind.getPlantImage())
+                    imageViewPlant.isInvisible = false
+                    imageViewPlant.setDrawableImage(plantKind.getPlantImage())
                 }
             }
             binding.apply {

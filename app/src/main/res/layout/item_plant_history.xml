@@ -9,6 +9,16 @@
         android:paddingHorizontal="4dp"
         android:paddingVertical="8dp">
 
+        <View
+            android:id="@+id/viewOval"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/oval_plant_history"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/imageViewPlant"
             android:layout_width="0dp"
