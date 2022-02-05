@@ -20,11 +20,11 @@ import retrofit2.HttpException
 
 class EditPlantViewModel(application: Application) : AndroidViewModel(application) {
     private val _characterList = MutableLiveData<List<SignPlantData>>()
-    val characterList : LiveData<List<SignPlantData>>
+    val characterList: LiveData<List<SignPlantData>>
         get() = _characterList
 
     private val _newPlant = MutableLiveData<ResponsePlantUpdateData>()
-    val newPlant : LiveData<ResponsePlantUpdateData>
+    val newPlant: LiveData<ResponsePlantUpdateData>
         get() = _newPlant
 
     private val _plantInfo = MutableLiveData<PlantData>()
@@ -44,7 +44,8 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
     private val _ordinalNumber = MutableLiveData<Int>()
     val ordinalNumber: LiveData<Int> = _ordinalNumber
 
-    private val token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
+    private val token =
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
 
     fun fetchPlant() = viewModelScope.launch(Dispatchers.IO) {
         try {
@@ -60,21 +61,24 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    fun changePlantInfo(name:Editable, kind:String) = viewModelScope.launch(Dispatchers.IO) {
+    fun changePlantInfo(name: Editable, kind: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
             _newPlant.postValue(
-                RetrofitBuilder.plantService.editPlant(token, RequestPlantUpdateData(name.toString(), kind))
+                RetrofitBuilder.plantService.editPlant(
+                    token,
+                    RequestPlantUpdateData(name.toString(), kind)
+                )
             )
-        } catch (e: HttpException){
+        } catch (e: HttpException) {
         }
     }
 
     // 다 자란 기본 캐릭터 데이터
     fun setCharacterList() {
         _characterList.value = mutableListOf(
-            SignPlantData("대파", R.drawable.ic_launcher_background),
-            SignPlantData("토마토", R.drawable.ic_launcher_background),
-            SignPlantData("브로콜리", R.drawable.ic_launcher_background),
+            SignPlantData("대파", R.drawable.ic_green_onion_level_5),
+            SignPlantData("토마토", R.drawable.ic_tomato_level_5),
+            SignPlantData("브로콜리", R.drawable.ic_broccoli_level_5)
         )
     }
 }
