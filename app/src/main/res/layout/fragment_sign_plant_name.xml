@@ -77,6 +77,9 @@
             android:textAlignment="center"
             android:background="@null"
             android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewNaming" />
