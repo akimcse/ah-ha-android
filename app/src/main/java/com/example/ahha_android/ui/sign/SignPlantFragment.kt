@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.*
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantBinding
 import com.example.ahha_android.ui.sign.adapter.SignPlantAdapter
@@ -23,7 +25,7 @@ class SignPlantFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantBinding
     private val viewModel: SignViewModel by viewModels()
     lateinit var navController: NavController
-
+    private var scrollPosition: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +54,8 @@ class SignPlantFragment : Fragment() {
         binding.viewPager.offscreenPageLimit = 4
         binding.viewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         // item_view 간의 양 옆 여백을 상쇄할 값
-        val offsetBetweenPages = resources.getDimensionPixelOffset(R.dimen.offsetBetweenPages).toFloat()
+        val offsetBetweenPages =
+            resources.getDimensionPixelOffset(R.dimen.offsetBetweenPages).toFloat()
         binding.viewPager.setPageTransformer { page, position ->
             val myOffset = position * -(5 * offsetBetweenPages)
             if (position < -1) {
@@ -72,9 +75,10 @@ class SignPlantFragment : Fragment() {
             // Paging 완료되면 호출
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                Log.d("ViewPagerFragment", "Page ${position+1}")
+                scrollPosition = position
+                Log.d("ViewPagerFragment", "Page ${scrollPosition + 1}")
 
-                when(position+1){
+                when (scrollPosition + 1) {
                     1 -> {
                         binding.imageViewCharacter.setDrawableImage(R.drawable.ic_green_onion_level_5)
                     }
@@ -85,25 +89,27 @@ class SignPlantFragment : Fragment() {
                         binding.imageViewCharacter.setDrawableImage(R.drawable.ic_broccoli_level_5)
                     }
                 }
+            }
 
-                // 스크롤하지 않으면 색상은 변하지 않지만 버튼 클릭은 됨
-                if(position!=0){
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+
+                if (state == 1) {
                     binding.buttonFinish.isActivated = true
-                }
-
-                binding.buttonFinish.setOnClickListener{
-                    val bundle = bundleOf("characterNum" to position+1)
-                    navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment,bundle)
+                    binding.buttonFinish.setOnClickListener {
+                        val bundle = bundleOf("characterNum" to scrollPosition + 1)
+                        navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment, bundle)
+                    }
                 }
             }
         })
     }
 
     private fun setCharacterObserve() {
-        viewModel.characterList.observe(viewLifecycleOwner){
-                characterList -> with(binding.viewPager.adapter as SignPlantAdapter){
-            setCharacter(characterList)
-        }
+        viewModel.characterList.observe(viewLifecycleOwner) { characterList ->
+            with(binding.viewPager.adapter as SignPlantAdapter) {
+                setCharacter(characterList)
+            }
         }
     }
 }
