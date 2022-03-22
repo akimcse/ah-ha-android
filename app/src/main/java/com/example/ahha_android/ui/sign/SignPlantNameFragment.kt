@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantNameBinding
 import com.example.ahha_android.ui.main.MainActivity
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import kotlinx.coroutines.NonCancellable.start
 
 class SignPlantNameFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantNameBinding
@@ -56,36 +56,39 @@ class SignPlantNameFragment : Fragment() {
         }
     }
 
-    // 입력/미입력 구분이 안 먹음 -> 일단 항상 활성화 상태임
     private fun checkInputBlank() {
         binding.editTextCharacterName.addTextChangedListener {
             if (!binding.editTextCharacterName.text.isNullOrBlank()) {
                 binding.buttonFinish.isActivated = true
-                binding.buttonFinish.setOnClickListener {
-                    val intent = Intent(activity, MainActivity::class.java)
-                    startActivity(intent)
-                    val characterNum = arguments?.getInt("characterNum")
+                initClickListener()
+            }
+        }
+    }
 
-                    val name = binding.editTextCharacterName.text
-                    if (characterNum != null) {
-                        when (characterNum) {
-                            1 -> {
-                                kind = "GREENONION"
-                            }
-                            2 -> {
-                                kind = "TOMATO"
-                            }
-                            3 -> {
-                                kind = "BROCCOLI"
-                            }
-                        }
+    private fun initClickListener(){
+        binding.buttonFinish.setOnClickListener {
+            val characterNum = arguments?.getInt("characterNum")
+            val name = binding.editTextCharacterName.text
+            if (characterNum != null) {
+                when (characterNum) {
+                    1 -> {
+                        kind = "GREENONION"
                     }
-                    viewModel.createPlant(name, kind)
-
-                    // 조금 느리더라도 로그인부분을 백스택에서 빼는 것이 나은지, 아니면 시연 영상에서는 가볍게 그냥 둘지?
-                    //navController.popBackStack()
+                    2 -> {
+                        kind = "TOMATO"
+                    }
+                    3 -> {
+                        kind = "BROCCOLI"
+                    }
                 }
             }
+
+            val intent = Intent(activity, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+
+            viewModel.createPlant(name, kind)
         }
     }
 }
