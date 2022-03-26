@@ -1,6 +1,5 @@
 package com.example.ahha_android.ui.main.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -47,15 +46,16 @@ class PlantHistoryViewHolder(
         plantKind = data.kind
 
         animationToMiddle = AnimationUtils.loadAnimation(context, R.anim.to_middle)
-        animationFromMiddle = AnimationUtils.loadAnimation(context, R.anim.from_middle)
         animationToMiddle.setAnimationListener(this)
+
+        animationFromMiddle = AnimationUtils.loadAnimation(context, R.anim.from_middle)
         animationFromMiddle.setAnimationListener(this)
 
         itemView.setOnClickListener {
             binding.apply {
-                imageViewPlant.clearAnimation()
-                imageViewPlant.animation = animationToMiddle
-                imageViewPlant.startAnimation(animationToMiddle)
+                container.clearAnimation()
+                container.animation = animationToMiddle
+                container.startAnimation(animationToMiddle)
             }
         }
     }
@@ -64,22 +64,22 @@ class PlantHistoryViewHolder(
         if (animation == animationToMiddle) {
             if (isFrontOfCardShowing) {
                 binding.apply {
-                    textViewPlantName.isInvisible = false
-                    textViewPlantTime.isInvisible = false
+                    viewOval.setBackgroundResource(R.drawable.oval_plant_history_back)
                     imageViewPlant.isInvisible = true
+                    plantInfoContainer.isInvisible = false
                 }
             } else {
                 binding.apply {
-                    textViewPlantName.isInvisible = true
-                    textViewPlantTime.isInvisible = true
-                    imageViewPlant.isInvisible = false
+                    viewOval.setBackgroundResource(R.drawable.oval_plant_history_front)
+                    plantInfoContainer.isInvisible = true
                     imageViewPlant.setDrawableImage(plantKind.getPlantImage())
+                    imageViewPlant.isInvisible = false
                 }
             }
             binding.apply {
-                imageViewPlant.clearAnimation()
-                imageViewPlant.animation = animationFromMiddle
-                imageViewPlant.startAnimation(animationFromMiddle)
+                container.clearAnimation()
+                container.animation = animationFromMiddle
+                container.startAnimation(animationFromMiddle)
             }
         } else {
             isFrontOfCardShowing = !isFrontOfCardShowing

@@ -4,35 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="4dp"
-        android:paddingVertical="8dp">
+        android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/viewOval"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/oval_plant_history"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageViewPlant"
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/viewOval"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/oval_plant_history_front"
+                android:elevation="5dp" />
+
+            <ImageView
+                android:id="@+id/imageViewPlant"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="12dp"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/plantInfoContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="18dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +62,6 @@
                 android:includeFontPadding="false"
                 android:textColor="@color/grey_title"
                 android:textSize="13dp"
-                android:visibility="invisible"
                 tools:text="캐릭터 이름" />
 
             <TextView
@@ -64,7 +76,6 @@
                 android:includeFontPadding="false"
                 android:textColor="@color/grey5"
                 android:textSize="16dp"
-                android:visibility="invisible"
                 tools:text="2021.12.08\n~\n2022.01.31" />
 
         </LinearLayout>
