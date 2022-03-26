@@ -23,6 +23,7 @@
     <color name="grey_info">#A5A5A5</color>
     <color name="grey_info_icon">#E5E5E5</color>
     <color name="brown">#BD7B60</color>
+    <color name="light_brown">#C6886F</color>
 
     <!-- SettingNotificationFragment -->
     <color name="grey_title">#565656</color>
