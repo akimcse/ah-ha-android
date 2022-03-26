@@ -10,8 +10,8 @@
 
     <color name="lime">#D0F72F</color>
     <color name="green">#A4F431</color>
-    <color name="orange">#F27851</color>
-    <color name="blue">#5955F9</color>
+    <color name="orange">#FF7B52</color>
+    <color name="blue">#6D69FF</color>
     <color name="ultramarine">#3329F2</color>
     <color name="grey1">#F3F3F3</color>
     <color name="grey2">#DBDBDB</color>
@@ -22,7 +22,7 @@
     <!-- MainFragment -->
     <color name="grey_info">#A5A5A5</color>
     <color name="grey_info_icon">#E5E5E5</color>
-    <color name="brown">#9C5C42</color>
+    <color name="brown">#BD7B60</color>
 
     <!-- SettingNotificationFragment -->
     <color name="grey_title">#565656</color>
