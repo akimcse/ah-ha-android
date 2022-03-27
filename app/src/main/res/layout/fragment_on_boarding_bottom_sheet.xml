@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.ahha_android.ui.viewmodel.MainViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="36dp">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutIndicator"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/transparent"
+            app:tabBackground="@drawable/indicator_on_boarding"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:overScrollMode="never" />
+
+        <TextView
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/selector_on_boarding_button"
+            android:enabled="true"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="35dp"
+            android:paddingVertical="16dp"
+            android:textColor="@drawable/selector_on_boarding_button_text"
+            android:textSize="20dp"
+            tools:text="@string/on_boarding_button_next" />
+
+    </LinearLayout>
+
+</layout>
