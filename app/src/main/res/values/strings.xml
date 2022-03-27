@@ -11,6 +11,13 @@
     <string name="sign_plant_choose_character">키울 식물을 골라주세요</string>
     <string name="sing_plant_naming">이름을 지어주세요</string>
     <string name="sing_plant_name_input">캐릭터 이름 적는 칸</string>
+    
+    <!-- OnBoardingBottomSheetFragment -->
+    <string name="on_boarding_description_first">메일함 관리 버튼을 클릭해\n메일을 삭제해주세요</string>
+    <string name="on_boarding_description_second">메일을 지울수록\n식물이 쑥쑥 자라나요</string>
+    <string name="on_boarding_description_third">다 자란 식물은 교환할 수 있어요\n실제 집에서 키워보세요!</string>
+    <string name="on_boarding_button_next">NEXT</string>
+    <string name="on_boarding_button_close">CLOSE</string>
 
     <!-- MainFragment -->
     <string name="main_title">“Saving the earth”</string>

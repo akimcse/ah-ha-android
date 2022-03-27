@@ -41,6 +41,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _ordinalNumber = MutableLiveData<Int>()
     val ordinalNumber: LiveData<Int> = _ordinalNumber
 
+    private val _isLastPosition = MutableLiveData(false)
+    val isLastPosition: LiveData<Boolean> = _isLastPosition
+
     // FIXME
     private val token =
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
@@ -82,5 +85,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse("https://mail.google.com")
         context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
+    }
+
+    fun setCurrentPositionIsLast(value: Boolean) {
+        _isLastPosition.value = value
     }
 }

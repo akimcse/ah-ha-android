@@ -26,6 +26,10 @@ class MainFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        // Todo: apply sharedPref
+        //val onBoardingBottomSheet = OnBoardingBottomSheetFragment()
+        //onBoardingBottomSheet.show(parentFragmentManager, onBoardingBottomSheet.tag)
+
         addObserver()
 
         return binding.root
