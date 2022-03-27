@@ -66,6 +66,7 @@ class OnBoardingBottomSheetFragment : BottomSheetDialogFragment() {
     private fun addListener() {
         binding.button.setOnClickListener {
             if (viewModel.isLastPosition.value == true) {
+                // Todo: apply sharedPref
                 dismiss()
             } else {
                 val currentPos = binding.viewPager.currentItem
