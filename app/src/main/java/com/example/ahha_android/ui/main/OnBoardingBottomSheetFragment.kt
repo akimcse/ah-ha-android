@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentOnBoardingBottomSheetBinding
 import com.example.ahha_android.ui.main.adapter.OnBoardingAdapter
 import com.example.ahha_android.ui.viewmodel.MainViewModel
@@ -16,6 +17,11 @@ class OnBoardingBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentOnBoardingBottomSheetBinding
     private val viewModel: MainViewModel by viewModels()
     private lateinit var onBoardingAdapter: OnBoardingAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.RoundedCornerBottomSheetDialogTheme)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
