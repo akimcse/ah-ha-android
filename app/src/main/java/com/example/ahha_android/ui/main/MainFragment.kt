@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.ahha_android.R
+import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.databinding.FragmentMainBinding
 import com.example.ahha_android.ui.viewmodel.MainViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
@@ -26,9 +27,7 @@ class MainFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // Todo: apply sharedPref
-        //val onBoardingBottomSheet = OnBoardingBottomSheetFragment()
-        //onBoardingBottomSheet.show(parentFragmentManager, onBoardingBottomSheet.tag)
+        init()
 
         addObserver()
 
@@ -44,6 +43,16 @@ class MainFragment : Fragment() {
                 fetchMailCount()
                 fetchPlant()
             }
+        }
+    }
+
+    private fun init() {
+        if (!EasyPeasySharedPreference.getOnBoardingVisit()) {
+            binding.textViewTitle.text = getString(R.string.main_title_initial)
+            val onBoardingBottomSheet = OnBoardingBottomSheetFragment()
+            onBoardingBottomSheet.show(parentFragmentManager, onBoardingBottomSheet.tag)
+        } else {
+            binding.textViewTitle.text = getString(R.string.main_title)
         }
     }
 

@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ahha_android.R
+import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.databinding.FragmentOnBoardingBottomSheetBinding
 import com.example.ahha_android.ui.main.adapter.OnBoardingAdapter
 import com.example.ahha_android.ui.viewmodel.MainViewModel
@@ -66,7 +67,7 @@ class OnBoardingBottomSheetFragment : BottomSheetDialogFragment() {
     private fun addListener() {
         binding.button.setOnClickListener {
             if (viewModel.isLastPosition.value == true) {
-                // Todo: apply sharedPref
+                EasyPeasySharedPreference.setOnBoardingVisit(hasVisited = true)
                 dismiss()
             } else {
                 val currentPos = binding.viewPager.currentItem

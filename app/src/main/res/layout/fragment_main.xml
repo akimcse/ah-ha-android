@@ -100,7 +100,6 @@
                 android:layout_marginTop="26dp"
                 android:fontFamily="@font/apple_sd_gothic_neo_bold"
                 android:includeFontPadding="false"
-                android:text="@string/main_title"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"

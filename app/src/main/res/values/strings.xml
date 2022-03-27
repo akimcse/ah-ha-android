@@ -20,6 +20,7 @@
     <string name="on_boarding_button_close">CLOSE</string>
 
     <!-- MainFragment -->
+    <string name="main_title_initial">Delete the email, please</string>
     <string name="main_title">“Saving the earth”</string>
     <string name="main_plant_number_title">키운 나무 수</string>
     <string name="main_plant_number_format">%d그루</string>
