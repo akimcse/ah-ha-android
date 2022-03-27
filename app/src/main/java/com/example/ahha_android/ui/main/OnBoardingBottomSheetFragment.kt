@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentOnBoardingBottomSheetBinding
 import com.example.ahha_android.ui.main.adapter.OnBoardingAdapter
@@ -29,9 +30,12 @@ class OnBoardingBottomSheetFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentOnBoardingBottomSheetBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         initViewPager()
         initTabLayoutIndicator()
+        addListener()
 
         return binding.root
     }
@@ -41,6 +45,15 @@ class OnBoardingBottomSheetFragment : BottomSheetDialogFragment() {
         binding.viewPager.run {
             adapter = onBoardingAdapter
             (getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    when (position) {
+                        0 -> viewModel.setCurrentPositionIsLast(false)
+                        1 -> viewModel.setCurrentPositionIsLast(false)
+                        2 -> viewModel.setCurrentPositionIsLast(true)
+                    }
+                }
+            })
         }
     }
 
@@ -48,5 +61,16 @@ class OnBoardingBottomSheetFragment : BottomSheetDialogFragment() {
         TabLayoutMediator(binding.tabLayoutIndicator, binding.viewPager) { tab, _ ->
             tab.view.isClickable = false
         }.attach()
+    }
+
+    private fun addListener() {
+        binding.button.setOnClickListener {
+            if (viewModel.isLastPosition.value == true) {
+                dismiss()
+            } else {
+                val currentPos = binding.viewPager.currentItem
+                binding.viewPager.currentItem = currentPos + 1
+            }
+        }
     }
 }

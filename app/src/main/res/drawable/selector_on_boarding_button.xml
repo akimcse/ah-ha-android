@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/background_radius_ultramarine" android:state_enabled="true" />
-    <item android:drawable="@drawable/background_stroke_grey" android:state_enabled="false" />
-</selector>
