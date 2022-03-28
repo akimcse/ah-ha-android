@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">EasyPeasy</string>
     <string name="google_login_client_id">545692381135-fvhedorrsrtfdk6q7si4hid5l3j0lu0v.apps.googleusercontent.com</string>
+    <string name="default_notification_channel_id">easy_peasy_channel</string>
 
     <!-- SignFragment -->
     <string name="sign_with_google">Google 계정으로 가입</string>
