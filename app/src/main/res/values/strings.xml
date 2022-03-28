@@ -24,6 +24,7 @@
     <!-- PlantHistoryFragment -->
     <string name="plant_history_time_format">%s\n~\n%s</string>
     <string name="plant_history_title">캐릭터 히스토리</string>
+    <string name="plant_history_go_to_exchange">식물 받으러 가기</string>
 
     <!-- EditPlantFragment -->
     <string name="edit_plant_finish">변경 완료</string>
