@@ -28,7 +28,7 @@
     <!-- EditPlantFragment -->
     <string name="edit_plant_finish">변경 완료</string>
     <string name="edit_plant_make_character">내 캐릭터 변경</string>
-    
+
     <!-- SettingFragment -->
     <string name="setting_title">설정</string>
     <string name="setting_info_notification_menu_title">정보성 푸시 알림</string>
@@ -37,7 +37,7 @@
     <string name="setting_mail_notification_menu_description">이메일 삭제 알림 개수 설정</string>
     <string name="setting_switch_on">on</string>
     <string name="setting_switch_off">off</string>
-    
+
     <!-- SettingNotificationFragment -->
     <string name="setting_notification_title">이메일 삭제 알림</string>
     <string name="setting_notification_push_title">푸시 알림</string>
@@ -45,4 +45,13 @@
     <string name="setting_notification_complete">설정 완료</string>
     <string name="setting_notification_minus">-</string>
     <string name="setting_notification_plus">+</string>
+
+    <!-- CompleteDialogFragment -->
+    <string name="complete_dialog_congratulations">Congratulations!</string>
+    <string name="complete_dialog_done">가 다 자랐어요</string>
+    <string name="complete_dialog_close">닫기</string>
+    <string name="complete_dialog_exchange">식물 교환</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

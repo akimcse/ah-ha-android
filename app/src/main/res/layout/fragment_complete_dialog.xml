@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.CompleteDialogFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_complete_dialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTitleCongratulations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="105dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:text="@string/complete_dialog_congratulations"
+            android:textColor="@color/white"
+            android:textSize="33dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTitleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toStartOf="@+id/textViewTitleDone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitleCongratulations"
+            tools:text="파파" />
+
+        <TextView
+            android:id="@+id/textViewTitleDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:text="@string/complete_dialog_done"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewTitleName"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitleCongratulations" />
+
+        <ImageView
+            android:id="@+id/imageViewPlant"
+            android:layout_width="213dp"
+            android:layout_height="303dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitleDone"
+            tools:src="@drawable/ic_green_onion_level_5" />
+
+        <TextView
+            android:id="@+id/buttonFinish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="38dp"
+            android:background="@drawable/bg_button_round_gray"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:paddingVertical="16dp"
+            android:text="@string/complete_dialog_close"
+            android:textAlignment="center"
+            android:textColor="@color/grey3"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonExchange"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/buttonExchange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="38dp"
+            android:background="@drawable/bg_button_round_blue"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:paddingVertical="16dp"
+            android:text="@string/complete_dialog_exchange"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonFinish" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
