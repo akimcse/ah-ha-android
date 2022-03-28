@@ -21,6 +21,7 @@ import com.example.ahha_android.ui.sign.adapter.SignPlantAdapter
 import com.example.ahha_android.ui.viewmodel.EditPlantViewModel
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import com.example.ahha_android.util.setStatusBarColor
 import java.lang.Math.abs
 
 class EditPlantFragment : Fragment() {
@@ -36,6 +37,7 @@ class EditPlantFragment : Fragment() {
         binding = FragmentEditPlantBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.white)
         return binding.root
     }
 
