@@ -18,10 +18,15 @@ class PlantExchangeFragment : Fragment() {
     ): View? {
         binding = FragmentPlantExchangeBinding.inflate(inflater, container, false)
 
-
+        setImage()
 
         return binding.root
     }
 
 
+    private fun setImage() {
+        binding.imageViewBroccoli.clipToOutline = true
+        binding.imageViewGreenOnion.clipToOutline = true
+        binding.imageViewTomato.clipToOutline = true
+    }
 }
