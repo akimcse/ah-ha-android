@@ -32,6 +32,7 @@
     <!-- PlantHistoryFragment -->
     <string name="plant_history_time_format">%s\n~\n%s</string>
     <string name="plant_history_title">캐릭터 히스토리</string>
+    <string name="plant_history_go_to_exchange">식물 받으러 가기</string>
 
     <!-- EditPlantFragment -->
     <string name="edit_plant_finish">변경 완료</string>
@@ -53,4 +54,19 @@
     <string name="setting_notification_complete">설정 완료</string>
     <string name="setting_notification_minus">-</string>
     <string name="setting_notification_plus">+</string>
+
+    <!-- PlantExchangeFragment -->
+    <string name="plant_exchange_title">식물 교환</string>
+    <string name="plant_exchange_address_title">주소 설정</string>
+    <string name="plant_exchange_address_searching">지번, 도로명, 건물명으로 검색</string>
+    <string name="plant_exchange_address_location">현재 위치로 설정</string>
+    <string name="plant_exchange_possible_number">교환 가능한 채소</string>
+    <string name="plant_exchange_broccoli">브로콜리</string>
+    <string name="plant_exchange_broccoli_info">브로콜리 설명</string>
+    <string name="plant_exchange_green_onion">파</string>
+    <string name="plant_exchange_green_onion_info">파 설명</string>
+    <string name="plant_exchange_tomato">토마토</string>
+    <string name="plant_exchange_tomato_info">토마토 설명</string>
+    <string name="plant_exchange_delivery">배송하기</string>
+
 </resources>
