@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ahha_android.R
+import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.data.model.request.RequestPlantUpdateData
-import com.example.ahha_android.data.model.response.Data
 import com.example.ahha_android.data.model.response.ResponsePlantUpdateData
 import com.example.ahha_android.data.response.PlantData
 import com.example.ahha_android.data.service.RetrofitBuilder
@@ -44,8 +44,7 @@ class EditPlantViewModel(application: Application) : AndroidViewModel(applicatio
     private val _ordinalNumber = MutableLiveData<Int>()
     val ordinalNumber: LiveData<Int> = _ordinalNumber
 
-    private val token =
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
+    private val token = "Bearer ${EasyPeasySharedPreference.getAccessToken()}"
 
     fun fetchPlant() = viewModelScope.launch(Dispatchers.IO) {
         try {
