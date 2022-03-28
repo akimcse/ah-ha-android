@@ -35,7 +35,19 @@
         android:id="@+id/plantHistoryFragment"
         android:name="com.example.ahha_android.ui.main.PlantHistoryFragment"
         android:label="PlantHistoryFragment"
-        tools:layout="@layout/fragment_plant_history" />
+        tools:layout="@layout/fragment_plant_history">
+
+        <action
+            android:id="@+id/action_plantHistoryFragmentToPlantExchangeFragment"
+            app:destination="@id/plantExchangeFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/plantExchangeFragment"
+        android:name="com.example.ahha_android.ui.main.PlantExchangeFragment"
+        android:label="PlantHistoryFragment"
+        tools:layout="@layout/fragment_plant_exchange" />
 
     <fragment
         android:id="@+id/settingFragment"
