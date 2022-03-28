@@ -23,6 +23,9 @@
             android:id="@+id/actionMainFragmentToSettingFragment"
             app:destination="@id/settingFragment" />
 
+        <action
+            android:id="@+id/actionMainFragmentToSignPlantFragment"
+            app:destination="@id/signPlantFragment" />
     </fragment>
 
     <fragment
@@ -47,7 +50,11 @@
         android:id="@+id/plantExchangeFragment"
         android:name="com.example.ahha_android.ui.main.PlantExchangeFragment"
         android:label="PlantHistoryFragment"
-        tools:layout="@layout/fragment_plant_exchange" />
+        tools:layout="@layout/fragment_plant_exchange" >
+        <action
+            android:id="@+id/actionPlantExchangeFragmentToSignPlantFragment"
+            app:destination="@id/signPlantFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/settingFragment"
@@ -66,5 +73,21 @@
         android:name="com.example.ahha_android.ui.setting.SettingNotificationFragment"
         android:label="SettingNotificationFragment"
         tools:layout="@layout/fragment_setting_notification" />
+
+    <fragment
+        android:id="@+id/signPlantFragment"
+        android:name="com.example.ahha_android.ui.sign.SignPlantFragment"
+        android:label="SignPlantFragment"
+        tools:layout="@layout/fragment_sign_plant">
+        <action
+            android:id="@+id/actionSignPlantFragmentToSignPlantNameFragment"
+            app:destination="@id/signPlantNameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signPlantNameFragment"
+        android:name="com.example.ahha_android.ui.sign.SignPlantNameFragment"
+        android:label="SignPlantNameFragment"
+        tools:layout="@layout/fragment_sign_plant_name" />
 
 </navigation>

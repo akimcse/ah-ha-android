@@ -5,7 +5,7 @@
     tools:context=".ui.main.PlantExchangeFragment">
 
     <data>
-
+        <import type="com.example.ahha_android.R" />
         <import type="androidx.navigation.Navigation" />
     </data>
 
@@ -475,6 +475,7 @@
             android:background="@drawable/bg_button_round_blue"
             android:fontFamily="@font/apple_sd_gothic_neo_regular"
             android:paddingVertical="17dp"
+            android:onClick="@{(v) -> Navigation.findNavController(v).navigate(R.id.actionPlantExchangeFragmentToSignPlantFragment)}"
             android:text="@string/plant_exchange_delivery"
             android:textAlignment="center"
             android:textColor="@color/white"
