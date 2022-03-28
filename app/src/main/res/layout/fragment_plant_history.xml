@@ -11,60 +11,92 @@
         <import type="androidx.navigation.Navigation" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:background="@android:color/transparent"
-            app:elevation="0dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
                 android:background="@android:color/transparent"
-                app:contentInsetStart="0dp">
+                app:elevation="0dp">
 
-                <ImageView
-                    android:id="@+id/imageViewBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="10dp"
-                    android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_back" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@android:color/transparent"
+                    app:contentInsetStart="0dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
-                    android:includeFontPadding="false"
-                    android:text="@string/plant_history_title"
-                    android:textColor="@color/grey5"
-                    android:textSize="20dp" />
+                    <ImageView
+                        android:id="@+id/imageViewBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="10dp"
+                        android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_back" />
 
-            </androidx.appcompat.widget.Toolbar>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                        android:includeFontPadding="false"
+                        android:text="@string/plant_history_title"
+                        android:textColor="@color/grey5"
+                        android:textSize="20dp" />
 
-        </com.google.android.material.appbar.AppBarLayout>
+                </androidx.appcompat.widget.Toolbar>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewPlantHistory"
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPlantHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingBottom="30dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/buttonGoToExchange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/bg_button_round_red"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:paddingVertical="17dp"
+            android:text="@string/plant_history_go_to_exchange"
+            android:paddingStart="15dp"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingBottom="30dp" />
+            android:src="@drawable/ic_arrow_forward_white"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonGoToExchange"
+            app:layout_constraintEnd_toEndOf="@+id/buttonGoToExchange"
+            app:layout_constraintTop_toTopOf="@+id/buttonGoToExchange" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

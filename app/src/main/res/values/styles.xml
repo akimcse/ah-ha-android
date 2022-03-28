@@ -7,4 +7,9 @@
         <item name="android:textSize">13sp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+
+    <!-- Rounded Corner BottomSheet -->
+    <style name="RoundedCornerBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/background_rounded_corner_bottom_sheet</item>
+    </style>
 </resources>

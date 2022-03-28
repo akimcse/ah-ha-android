@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "545692381135",
+    "firebase_url": "https://ah-ha-gcp-default-rtdb.firebaseio.com",
+    "project_id": "ah-ha-gcp",
+    "storage_bucket": "ah-ha-gcp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545692381135:android:32f3851113fdf94494acba",
+        "android_client_info": {
+          "package_name": "com.example.ahha_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545692381135-togivojgmj2e58olgelri5fqfdj8t841.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ahha_android",
+            "certificate_hash": "468b04a555b406945b92d158f309d67f785050b6"
+          }
+        },
+        {
+          "client_id": "545692381135-aj9h5bo81kalaedcgsg2i0d0qshvubqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYyVF0slFWcZYAispRLtMRNHOrudb1stc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545692381135-aj9h5bo81kalaedcgsg2i0d0qshvubqh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

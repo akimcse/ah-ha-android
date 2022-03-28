@@ -11,8 +11,16 @@
     <string name="sign_plant_choose_character">키울 식물을 골라주세요</string>
     <string name="sing_plant_naming">이름을 지어주세요</string>
     <string name="sing_plant_name_input">캐릭터 이름 적는 칸</string>
+    
+    <!-- OnBoardingBottomSheetFragment -->
+    <string name="on_boarding_description_first">메일함 관리 버튼을 클릭해\n메일을 삭제해주세요</string>
+    <string name="on_boarding_description_second">메일을 지울수록\n식물이 쑥쑥 자라나요</string>
+    <string name="on_boarding_description_third">다 자란 식물은 교환할 수 있어요\n실제 집에서 키워보세요!</string>
+    <string name="on_boarding_button_next">NEXT</string>
+    <string name="on_boarding_button_close">CLOSE</string>
 
     <!-- MainFragment -->
+    <string name="main_title_initial">Delete the email, please</string>
     <string name="main_title">“Saving the earth”</string>
     <string name="main_plant_number_title">키운 나무 수</string>
     <string name="main_plant_number_format">%d그루</string>
@@ -24,6 +32,7 @@
     <!-- PlantHistoryFragment -->
     <string name="plant_history_time_format">%s\n~\n%s</string>
     <string name="plant_history_title">캐릭터 히스토리</string>
+    <string name="plant_history_go_to_exchange">식물 받으러 가기</string>
 
     <!-- EditPlantFragment -->
     <string name="edit_plant_finish">변경 완료</string>
@@ -45,6 +54,21 @@
     <string name="setting_notification_complete">설정 완료</string>
     <string name="setting_notification_minus">-</string>
     <string name="setting_notification_plus">+</string>
+
+    <!-- PlantExchangeFragment -->
+    <string name="plant_exchange_title">식물 교환</string>
+    <string name="plant_exchange_address_title">주소 설정</string>
+    <string name="plant_exchange_address_searching">지번, 도로명, 건물명으로 검색</string>
+    <string name="plant_exchange_address_location">현재 위치로 설정</string>
+    <string name="plant_exchange_possible_number">교환 가능한 채소</string>
+    <string name="plant_exchange_broccoli">브로콜리</string>
+    <string name="plant_exchange_broccoli_info">브로콜리 설명</string>
+    <string name="plant_exchange_green_onion">파</string>
+    <string name="plant_exchange_green_onion_info">파 설명</string>
+    <string name="plant_exchange_tomato">토마토</string>
+    <string name="plant_exchange_tomato_info">토마토 설명</string>
+    <string name="plant_exchange_delivery">배송하기</string>
+
 
     <!-- CompleteDialogFragment -->
     <string name="complete_dialog_congratulations">Congratulations!</string>

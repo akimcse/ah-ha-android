@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.main.PlantExchangeFragment">
+
+    <data>
+
+        <import type="androidx.navigation.Navigation" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewPlantExchangeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:text="@string/plant_exchange_title"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewClose"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageViewClose" />
+
+        <TextView
+            android:id="@+id/textViewAddressTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="26dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:text="@string/plant_exchange_address_title"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPlantExchangeTitle" />
+
+        <EditText
+            android:id="@+id/EditTextAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_box_round_gray"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:hint="@string/plant_exchange_address_searching"
+            android:paddingVertical="18dp"
+            android:paddingStart="17dp"
+            android:textColor="@color/grey3"
+            android:textSize="13dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAddressTitle" />
+
+        <ImageView
+            android:id="@+id/imageViewGps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_mobie_gps"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EditTextAddress" />
+
+        <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:text="@string/plant_exchange_address_location"
+            android:textColor="@color/grey3"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewGps"
+            app:layout_constraintStart_toEndOf="@+id/imageViewGps" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/grey1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/vegetables"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/vegetables"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="46dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDelivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textViewPossible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                android:text="@string/plant_exchange_possible_number"
+                android:textColor="@color/grey3"
+                android:textSize="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/BroccoliBox"
+                android:layout_width="0dp"
+                android:layout_height="102dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_box_round_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewPossible">
+
+                <ImageView
+                    android:id="@+id/imageViewBroccoli"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginVertical="11dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_box_round"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_broccoli"
+                    app:layout_constraintBottom_toBottomOf="@+id/BroccoliBox"
+                    app:layout_constraintStart_toStartOf="@id/BroccoliBox"
+                    app:layout_constraintTop_toTopOf="@id/BroccoliBox" />
+
+                <TextView
+                    android:id="@+id/textViewBroccoli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_bold"
+                    android:text="@string/plant_exchange_broccoli"
+                    android:textColor="@color/grey5"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewBroccoli"
+                    app:layout_constraintTop_toTopOf="@+id/BroccoliBox" />
+
+                <TextView
+                    android:id="@+id/textViewBroccoliInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:text="@string/plant_exchange_broccoli_info"
+                    android:textColor="@color/grey3"
+                    android:textSize="13dp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewBroccoli"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBroccoli" />
+
+                <ImageView
+                    android:id="@+id/imageViewBroccoliCloseBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_close_mini"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="13dp"
+                    android:background="@drawable/bg_box_round_line"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/textViewBroccoliNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginHorizontal="55dp"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:text="0"/>
+
+                    <TextView
+                        android:id="@+id/textViewBroccoliMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/grey3"
+                        android:text="-"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/textViewBroccoliPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@color/grey3"
+                        android:text="+"
+                        android:textSize="20dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/GreenOnionBox"
+                android:layout_width="0dp"
+                android:layout_height="102dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_box_round_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/BroccoliBox">
+
+                <ImageView
+                    android:id="@+id/imageViewGreenOnion"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginVertical="11dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_box_round"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_green_onion"
+                    app:layout_constraintBottom_toBottomOf="@+id/GreenOnionBox"
+                    app:layout_constraintStart_toStartOf="@id/GreenOnionBox"
+                    app:layout_constraintTop_toTopOf="@id/GreenOnionBox" />
+
+                <TextView
+                    android:id="@+id/textViewGreenOnion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_bold"
+                    android:text="@string/plant_exchange_green_onion"
+                    android:textColor="@color/grey5"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewGreenOnion"
+                    app:layout_constraintTop_toTopOf="@+id/GreenOnionBox" />
+
+                <TextView
+                    android:id="@+id/textViewGreenOnionInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:text="@string/plant_exchange_green_onion_info"
+                    android:textColor="@color/grey3"
+                    android:textSize="13dp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewGreenOnion"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewGreenOnion" />
+
+                <ImageView
+                    android:id="@+id/imageViewCloseGreenOnionBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_close_mini"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="13dp"
+                    android:background="@drawable/bg_box_round_line"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/textViewGreenOnionNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginHorizontal="55dp"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:text="0"/>
+
+                    <TextView
+                        android:id="@+id/textViewGreenOnionMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/grey3"
+                        android:text="-"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/textViewGreenOnionPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@color/grey3"
+                        android:text="+"
+                        android:textSize="20dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/TomatoBox"
+                android:layout_width="0dp"
+                android:layout_height="102dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_box_round_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/GreenOnionBox">
+
+                <ImageView
+                    android:id="@+id/imageViewTomato"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginVertical="11dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_box_round"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_tomato"
+                    app:layout_constraintBottom_toBottomOf="@+id/TomatoBox"
+                    app:layout_constraintStart_toStartOf="@id/TomatoBox"
+                    app:layout_constraintTop_toTopOf="@id/TomatoBox" />
+
+                <TextView
+                    android:id="@+id/textViewTomato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="17dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_bold"
+                    android:text="@string/plant_exchange_tomato"
+                    android:textColor="@color/grey5"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewTomato"
+                    app:layout_constraintTop_toTopOf="@+id/TomatoBox" />
+
+                <TextView
+                    android:id="@+id/textViewTomatoInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/apple_sd_gothic_neo_regular"
+                    android:text="@string/plant_exchange_tomato_info"
+                    android:textColor="@color/grey3"
+                    android:textSize="13dp"
+                    app:layout_constraintStart_toEndOf="@id/imageViewTomato"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewTomato" />
+
+                <ImageView
+                    android:id="@+id/imageViewCloseTomatoBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_close_mini"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="13dp"
+                    android:background="@drawable/bg_box_round_line"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        android:id="@+id/textViewTomatoNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginHorizontal="55dp"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:text="0"/>
+
+                    <TextView
+                        android:id="@+id/textViewTomatoMinus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/grey3"
+                        android:text="-"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/textViewTomatoPlus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:paddingHorizontal="7dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@color/grey3"
+                        android:text="+"
+                        android:textSize="20dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/buttonDelivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/bg_button_round_blue"
+            android:fontFamily="@font/apple_sd_gothic_neo_regular"
+            android:paddingVertical="17dp"
+            android:text="@string/plant_exchange_delivery"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
