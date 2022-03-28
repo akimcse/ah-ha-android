@@ -28,7 +28,6 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         init()
-
         addObserver()
 
         return binding.root
@@ -60,11 +59,9 @@ class MainFragment : Fragment() {
         viewModel.ordinalNumber.observe(viewLifecycleOwner) {
             binding.textViewPlantNumber.text = getString(R.string.main_plant_number_format, it)
         }
-
         viewModel.mailCount.observe(viewLifecycleOwner) {
             binding.textViewMailCount.text = getString(R.string.main_mail_count_format, it)
         }
-
         viewModel.plantKind.observe(viewLifecycleOwner) {
             viewModel.plantLevel.value?.let { level ->
                 binding.imageViewPlant.setDrawableImage(it.getPlantImageByLevel(level))
