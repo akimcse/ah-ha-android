@@ -26,6 +26,10 @@
         <action
             android:id="@+id/actionMainFragmentToSignPlantFragment"
             app:destination="@id/signPlantFragment" />
+
+        <action
+            android:id="@+id/actionMainFragmentToPlantExchangeFragment"
+            app:destination="@id/plantExchangeFragment" />
     </fragment>
 
     <fragment

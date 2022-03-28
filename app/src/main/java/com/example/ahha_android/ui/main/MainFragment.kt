@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.databinding.FragmentMainBinding
@@ -18,6 +20,7 @@ import kotlinx.coroutines.launch
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val viewModel: MainViewModel by viewModels()
+    lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,10 +31,15 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         init()
-
         addObserver()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
     }
 
     override fun onResume() {
@@ -69,6 +77,27 @@ class MainFragment : Fragment() {
             viewModel.plantLevel.value?.let { level ->
                 binding.imageViewPlant.setDrawableImage(it.getPlantImageByLevel(level))
             }
+        }
+    }
+
+    private fun showDialog(){
+        binding.imageViewLogo.setOnClickListener{ //api 연동 후 띄우는 방식 수정
+            var dialogView = CompleteDialogFragment()
+            var bundle = Bundle()
+
+            dialogView.arguments = bundle
+
+            dialogView.setButtonClickListener(object : CompleteDialogFragment.OnButtonClickListener {
+                override fun onExchangeClicked() {
+                    navController.navigate(R.id.actionMainFragmentToPlantExchangeFragment, bundle)
+                }
+
+                override fun onFinishClicked() {
+                    navController.navigate(R.id.actionMainFragmentToSignPlantFragment, bundle)
+                }
+            })
+
+            fragmentManager?.let { dialogView.show(it, "tag") }
         }
     }
 }
