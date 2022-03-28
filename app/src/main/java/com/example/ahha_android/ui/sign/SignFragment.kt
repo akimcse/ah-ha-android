@@ -15,6 +15,7 @@ import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.databinding.FragmentSignBinding
 import com.example.ahha_android.ui.main.MainActivity
 import com.example.ahha_android.ui.viewmodel.SignViewModel
+import com.example.ahha_android.util.setStatusBarColor
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -48,6 +49,7 @@ class SignFragment : Fragment() {
         binding = FragmentSignBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.blue)
 
         viewModel.setAccessToken(null)
         addListener()

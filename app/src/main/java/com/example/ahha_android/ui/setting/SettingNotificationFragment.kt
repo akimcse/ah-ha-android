@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSettingNotificationBinding
 import com.example.ahha_android.ui.viewmodel.SettingViewModel
+import com.example.ahha_android.util.setStatusBarColor
 
 class SettingNotificationFragment : Fragment() {
     private lateinit var binding: FragmentSettingNotificationBinding
@@ -20,6 +22,7 @@ class SettingNotificationFragment : Fragment() {
         binding = FragmentSettingNotificationBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.white)
 
         return binding.root
     }

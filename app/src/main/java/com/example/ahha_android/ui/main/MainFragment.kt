@@ -12,6 +12,7 @@ import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.databinding.FragmentMainBinding
 import com.example.ahha_android.ui.viewmodel.MainViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import com.example.ahha_android.util.setStatusBarColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -26,6 +27,7 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.blue)
 
         init()
         addObserver()
