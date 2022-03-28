@@ -3,30 +3,27 @@ package com.example.ahha_android.ui.sign
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantNameBinding
 import com.example.ahha_android.ui.main.MainActivity
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
-import kotlinx.coroutines.NonCancellable.start
 
 class SignPlantNameFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantNameBinding
-    private val viewModel: SignViewModel by viewModels()
-    lateinit var navController: NavController
+    private val viewModel: SignViewModel by activityViewModels()
     lateinit var kind: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignPlantNameBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -82,13 +79,11 @@ class SignPlantNameFragment : Fragment() {
                     }
                 }
             }
+            viewModel.createPlant(name, kind)
 
             val intent = Intent(activity, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
-
-            viewModel.createPlant(name, kind)
+            requireActivity().finish()
         }
     }
 }

@@ -22,7 +22,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="55dp"
             android:src="@drawable/ic_back"
-            android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
