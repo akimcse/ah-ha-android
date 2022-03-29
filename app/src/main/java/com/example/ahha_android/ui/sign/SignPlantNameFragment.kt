@@ -13,14 +13,15 @@ import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantNameBinding
 import com.example.ahha_android.ui.main.MainActivity
 import com.example.ahha_android.ui.viewmodel.EditPlantViewModel
+import com.example.ahha_android.ui.viewmodel.ResetViewModel
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
 import com.example.ahha_android.util.setStatusBarColor
 
 class SignPlantNameFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantNameBinding
-    private val viewModel: SignViewModel by activityViewModels()
-    private val editViewModel: EditPlantViewModel by activityViewModels()
+    private val signViewModel: SignViewModel by activityViewModels()
+    private val resetViewModel: ResetViewModel by activityViewModels()
     lateinit var kind: String
 
     override fun onCreateView(
@@ -28,14 +29,20 @@ class SignPlantNameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignPlantNameBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
+        binding.viewModel = signViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         setStatusBarColor(requireActivity(), R.color.white)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        resetViewModel.fetchPlant()
+
         setCharacterImage()
         checkInputBlank()
-
-        return binding.root
     }
 
     private fun setCharacterImage() {
@@ -61,14 +68,14 @@ class SignPlantNameFragment : Fragment() {
         binding.editTextCharacterName.addTextChangedListener {
             if (!binding.editTextCharacterName.text.isNullOrBlank()) {
                 binding.buttonFinish.isActivated = true
-                initClickListener()
+                finishClickListener()
             } else {
-            binding.buttonFinish.isActivated = false
-                }
+                binding.buttonFinish.isActivated = false
+            }
         }
     }
 
-    private fun initClickListener(){
+    private fun finishClickListener() {
         binding.buttonFinish.setOnClickListener {
             val characterNum = arguments?.getInt("characterNum")
             if (characterNum != null) {
@@ -84,22 +91,30 @@ class SignPlantNameFragment : Fragment() {
                     }
                 }
             }
-
-            makePlant()
-
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            onFinish()
         }
     }
 
-    private fun makePlant(){
+
+    private fun onFinish(){
+        val intent = Intent(activity, MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
+
+        resetViewModel.fetchPlant()
+        makePlant()
+    }
+
+
+    private fun makePlant() {
         val name = binding.editTextCharacterName.text
-        editViewModel.ordinalNumber.observe(viewLifecycleOwner){
-            if(it == 0){
-                viewModel.createPlant(name, kind)
+        resetViewModel.plantLevel.observe(viewLifecycleOwner) {
+            if (it < 1) {
+                signViewModel.createPlant(name, kind)
+                Log.d("*********Create:", it.toString())
             } else {
-                viewModel.resetPlant(name, kind)
+                resetViewModel.resetPlant(name, kind)
+                Log.d("*********Reset:", it.toString())
             }
         }
     }

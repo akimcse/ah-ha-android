@@ -91,10 +91,9 @@ class MainFragment : Fragment() {
         }
     }
 
-
     private fun showDialog() {
-        var dialogView = CompleteDialogFragment()
-        var bundle = Bundle()
+        val dialogView = CompleteDialogFragment()
+        val bundle = Bundle()
 
         dialogView.arguments = bundle
 
@@ -102,7 +101,6 @@ class MainFragment : Fragment() {
             override fun onExchangeClicked() {
                 navController.navigate(R.id.actionMainFragmentToPlantExchangeFragment, bundle)
             }
-
             override fun onFinishClicked() {
                 navController.navigate(R.id.actionMainFragmentToSignPlantFragment, bundle)
             }
