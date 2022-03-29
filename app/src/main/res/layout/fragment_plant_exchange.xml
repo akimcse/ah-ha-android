@@ -128,11 +128,11 @@
                 android:layout_marginStart="6dp"
                 android:fontFamily="@font/apple_sd_gothic_neo_bold"
                 android:textColor="@color/orange"
+                android:text="0"
                 android:textSize="13dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewPossible"
                 app:layout_constraintStart_toEndOf="@id/textViewPossible"
-                app:layout_constraintTop_toTopOf="@+id/textViewPossible"
-                tools:text="3" />
+                app:layout_constraintTop_toTopOf="@+id/textViewPossible" />
 
             <TextView
                 android:id="@+id/textViewPossibleSlash"

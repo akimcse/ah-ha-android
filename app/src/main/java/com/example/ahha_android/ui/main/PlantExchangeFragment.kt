@@ -28,7 +28,7 @@ class PlantExchangeFragment : Fragment() {
         countBroccoliNum()
         countGreenOnionNum()
         countTomatoNum()
-
+        
         return binding.root
     }
 
@@ -57,7 +57,7 @@ class PlantExchangeFragment : Fragment() {
         }
 
         binding.textViewBroccoliPlus.setOnClickListener{
-            if(sum < 4){
+            if(sum < 3){
                 num++
                 sum++
             }
@@ -79,7 +79,7 @@ class PlantExchangeFragment : Fragment() {
         }
 
         binding.textViewGreenOnionPlus.setOnClickListener{
-            if(sum < 4){
+            if(sum < 3){
                 num++
                 sum++
             }
@@ -101,7 +101,7 @@ class PlantExchangeFragment : Fragment() {
         }
 
         binding.textViewTomatoPlus.setOnClickListener{
-            if(sum < 4){
+            if(sum < 3){
                 num++
                 sum++
             }
