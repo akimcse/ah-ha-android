@@ -153,6 +153,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="36dp"
             android:textColor="@drawable/color_text_selector"
+            android:enabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

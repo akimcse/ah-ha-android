@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -30,7 +31,7 @@ class EditPlantFragment : Fragment() {
     private lateinit var binding: FragmentEditPlantBinding
     private val viewModel: EditPlantViewModel by viewModels()
     lateinit var navController: NavController
-    lateinit var kind: String
+    private var kind = " "
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +63,7 @@ class EditPlantFragment : Fragment() {
             binding.buttonBroccoli.isSelected = true
             binding.buttonGreenOnion.isSelected = false
             binding.buttonTomato.isSelected = false
-            setCharacterObserve()
+            setPlantObserve(kind)
             Log.d("*************clicked","broccoli")
         }
 
@@ -71,7 +72,7 @@ class EditPlantFragment : Fragment() {
             binding.buttonGreenOnion.isSelected = true
             binding.buttonBroccoli.isSelected = false
             binding.buttonTomato.isSelected = false
-            setCharacterObserve()
+            setPlantObserve(kind)
             Log.d("*************clicked","green onion")
         }
 
@@ -80,18 +81,20 @@ class EditPlantFragment : Fragment() {
             binding.buttonTomato.isSelected = true
             binding.buttonGreenOnion.isSelected = false
             binding.buttonBroccoli.isSelected = false
-            setCharacterObserve()
+            setPlantObserve(kind)
             Log.d("*************clicked","tomato")
         }
     }
 
     private fun setFinishButton(){
-        binding.editTextCharacterName.addTextChangedListener {
+        binding.editTextCharacterName.doAfterTextChanged {
             if (!binding.editTextCharacterName.text.isNullOrBlank()) {
                 binding.buttonFinish.isActivated = true
+                binding.buttonFinish.isEnabled = true
                 finishClickListener()
             } else {
                 binding.buttonFinish.isActivated = false
+                binding.buttonFinish.isEnabled = false
             }
         }
     }
@@ -104,6 +107,19 @@ class EditPlantFragment : Fragment() {
         }
     }
 
+    private fun setPlantObserve(kind:String){
+        when(kind){
+            "BROCCOLI" -> viewModel.plantLevel.value?.let { level ->
+                binding.imageViewCharacter.setDrawableImage(Plant.BROCCOLI.getPlantImageByLevel(level))
+            }
+            "GREENONION" -> viewModel.plantLevel.value?.let { level ->
+                binding.imageViewCharacter.setDrawableImage(Plant.GREENONION.getPlantImageByLevel(level))
+            }
+            "TOMATO" -> viewModel.plantLevel.value?.let { level ->
+                binding.imageViewCharacter.setDrawableImage(Plant.TOMATO.getPlantImageByLevel(level))
+            }
+        }
+    }
 
     private fun setCharacterObserve() {
         viewModel.plantKind.observe(viewLifecycleOwner) {
