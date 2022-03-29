@@ -6,5 +6,6 @@ data class PlantHistoryData(
     val name: String,
     val startTime: String,
     val finishTime: String,
-    val kind: Plant
+    val kind: Plant,
+    val hasExchanged: Boolean
 )

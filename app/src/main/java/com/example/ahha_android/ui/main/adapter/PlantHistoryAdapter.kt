@@ -23,7 +23,7 @@ class PlantHistoryAdapter : RecyclerView.Adapter<PlantHistoryViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PlantHistoryViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(data[position], position)
     }
 
     override fun getItemCount(): Int = data.size
@@ -37,13 +37,16 @@ class PlantHistoryViewHolder(
     private lateinit var animationFromMiddle: Animation
     private var isFrontOfCardShowing = true
     private lateinit var plantKind: Plant
+    private val exchangedIndex = listOf(0, 2)
+    private var pos = -1
 
-    fun bind(data: PlantHistoryData) {
+    fun bind(data: PlantHistoryData, position: Int) {
         binding.textViewPlantName.text = data.name
         binding.textViewPlantTime.text =
             context.getString(R.string.plant_history_time_format, data.startTime, data.finishTime)
         binding.imageViewPlant.setDrawableImage(data.kind.getPlantImage())
         plantKind = data.kind
+        pos = position
 
         animationToMiddle = AnimationUtils.loadAnimation(context, R.anim.to_middle)
         animationToMiddle.setAnimationListener(this)
@@ -64,13 +67,21 @@ class PlantHistoryViewHolder(
         if (animation == animationToMiddle) {
             if (isFrontOfCardShowing) {
                 binding.apply {
-                    viewOval.setBackgroundResource(R.drawable.oval_plant_history_back)
+                    if (exchangedIndex.contains(pos)) {
+                        viewOval.setBackgroundResource(R.drawable.oval_plant_history_back_checked)
+                    } else {
+                        viewOval.setBackgroundResource(R.drawable.oval_plant_history_back)
+                    }
                     imageViewPlant.isInvisible = true
                     plantInfoContainer.isInvisible = false
                 }
             } else {
                 binding.apply {
-                    viewOval.setBackgroundResource(R.drawable.oval_plant_history_front)
+                    if (exchangedIndex.contains(pos)) {
+                        viewOval.setBackgroundResource(R.drawable.oval_plant_history_front_checked)
+                    } else {
+                        viewOval.setBackgroundResource(R.drawable.oval_plant_history_front)
+                    }
                     plantInfoContainer.isInvisible = true
                     imageViewPlant.setDrawableImage(plantKind.getPlantImage())
                     imageViewPlant.isInvisible = false
