@@ -37,6 +37,9 @@
     <!-- EditPlantFragment -->
     <string name="edit_plant_finish">변경 완료</string>
     <string name="edit_plant_make_character">내 캐릭터 변경</string>
+    <string name="edit_plant_broccoli">브로콜리</string>
+    <string name="edit_plant_green_onion">대파</string>
+    <string name="edit_plant_tomato">토마토</string>
 
     <!-- SettingFragment -->
     <string name="setting_title">설정</string>
