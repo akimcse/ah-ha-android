@@ -60,7 +60,9 @@ class SignPlantNameFragment : Fragment() {
             if (!binding.editTextCharacterName.text.isNullOrBlank()) {
                 binding.buttonFinish.isActivated = true
                 initClickListener()
-            }
+            } else {
+            binding.buttonFinish.isActivated = false
+                }
         }
     }
 
