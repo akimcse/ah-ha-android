@@ -23,7 +23,7 @@ data class PlantHistoryResponseData(
             val startTime = convertDateToStringFormat(data.startTime)
             val finishTime = convertDateToStringFormat(data.finishTime)
             val kind = Plant.valueOf(data.kind)
-            return PlantHistoryData(name, startTime, finishTime, kind)
+            return PlantHistoryData(name, startTime, finishTime, kind, false)
         }
     }
 }

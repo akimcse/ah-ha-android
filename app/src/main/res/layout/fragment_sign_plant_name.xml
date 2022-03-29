@@ -21,24 +21,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="55dp"
-            android:src="@drawable/ic_back"
             android:onClick="@{(v) -> Navigation.findNavController(v).popBackStack()}"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/textViewSignPlantNameTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/textViewSignPlantNameTitle" />
 
         <TextView
             android:id="@+id/textViewSignPlantNameTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sign_plant_make_character"
-            android:textSize="20dp"
-            android:textColor="@color/black"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/apple_sd_gothic_neo_regular"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
+            android:text="@string/sign_plant_make_character"
+            android:textColor="@color/black"
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageViewBack" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewCharacter"

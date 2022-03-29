@@ -1,6 +1,7 @@
 package com.example.ahha_android.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,13 +35,13 @@ class MainFragment : Fragment() {
 
         init()
         addObserver()
+        allGrownUp()
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         navController = Navigation.findNavController(view)
     }
 
@@ -80,24 +81,30 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun showDialog(){
-        binding.imageViewLogo.setOnClickListener{ //api 연동 후 띄우는 방식 수정
-            var dialogView = CompleteDialogFragment()
-            var bundle = Bundle()
-
-            dialogView.arguments = bundle
-
-            dialogView.setButtonClickListener(object : CompleteDialogFragment.OnButtonClickListener {
-                override fun onExchangeClicked() {
-                    navController.navigate(R.id.actionMainFragmentToPlantExchangeFragment, bundle)
-                }
-
-                override fun onFinishClicked() {
-                    navController.navigate(R.id.actionMainFragmentToSignPlantFragment, bundle)
-                }
-            })
-
-            fragmentManager?.let { dialogView.show(it, "tag") }
+    private fun allGrownUp() {
+        viewModel.plantScore.observe(viewLifecycleOwner) {
+            Log.d("***************Score", it.toString())
+            if (it >= 25) {
+                showDialog()
+            }
         }
+    }
+
+    private fun showDialog() {
+        val dialogView = CompleteDialogFragment()
+        val bundle = Bundle()
+
+        dialogView.arguments = bundle
+
+        dialogView.setButtonClickListener(object : CompleteDialogFragment.OnButtonClickListener {
+            override fun onExchangeClicked() {
+                navController.navigate(R.id.actionMainFragmentToPlantExchangeFragment, bundle)
+            }
+
+            override fun onFinishClicked() {
+                navController.navigate(R.id.actionMainFragmentToSignPlantFragment, bundle)
+            }
+        })
+        fragmentManager?.let { dialogView.show(it, "tag") }
     }
 }
