@@ -121,6 +121,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/textViewPossibleSum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/apple_sd_gothic_neo_bold"
+                android:textColor="@color/orange"
+                android:textSize="13dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPossible"
+                app:layout_constraintStart_toEndOf="@id/textViewPossible"
+                app:layout_constraintTop_toTopOf="@+id/textViewPossible"
+                tools:text="3" />
+
+            <TextView
+                android:id="@+id/textViewPossibleSlash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/apple_sd_gothic_neo_bold"
+                android:text="/"
+                android:textColor="@color/grey6"
+                android:textSize="13dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPossible"
+                app:layout_constraintStart_toEndOf="@id/textViewPossibleSum"
+                app:layout_constraintTop_toTopOf="@+id/textViewPossible" />
+
+            <TextView
+                android:id="@+id/textViewPossibleNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/apple_sd_gothic_neo_bold"
+                android:text="4"
+                android:textColor="@color/grey6"
+                android:textSize="13dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPossible"
+                app:layout_constraintStart_toEndOf="@id/textViewPossibleSlash"
+                app:layout_constraintTop_toTopOf="@+id/textViewPossible" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/BroccoliBox"
                 android:layout_width="0dp"
@@ -158,6 +195,7 @@
                     app:layout_constraintStart_toEndOf="@id/imageViewBroccoli"
                     app:layout_constraintTop_toTopOf="@+id/BroccoliBox" />
 
+                <!-- 브로콜리 설명 부분
                 <TextView
                     android:id="@+id/textViewBroccoliInfo"
                     android:layout_width="wrap_content"
@@ -170,16 +208,7 @@
                     android:textSize="13dp"
                     app:layout_constraintStart_toEndOf="@id/imageViewBroccoli"
                     app:layout_constraintTop_toBottomOf="@+id/textViewBroccoli" />
-
-                <ImageView
-                    android:id="@+id/imageViewBroccoliCloseBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/ic_close_mini"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    -->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="120dp"
@@ -272,6 +301,7 @@
                     app:layout_constraintStart_toEndOf="@id/imageViewGreenOnion"
                     app:layout_constraintTop_toTopOf="@+id/GreenOnionBox" />
 
+                <!-- 파 설명 부분
                 <TextView
                     android:id="@+id/textViewGreenOnionInfo"
                     android:layout_width="wrap_content"
@@ -284,16 +314,7 @@
                     android:textSize="13dp"
                     app:layout_constraintStart_toEndOf="@id/imageViewGreenOnion"
                     app:layout_constraintTop_toBottomOf="@+id/textViewGreenOnion" />
-
-                <ImageView
-                    android:id="@+id/imageViewCloseGreenOnionBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/ic_close_mini"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    -->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="120dp"
@@ -386,6 +407,7 @@
                     app:layout_constraintStart_toEndOf="@id/imageViewTomato"
                     app:layout_constraintTop_toTopOf="@+id/TomatoBox" />
 
+                <!-- 토마토 설명 부분
                 <TextView
                     android:id="@+id/textViewTomatoInfo"
                     android:layout_width="wrap_content"
@@ -398,16 +420,7 @@
                     android:textSize="13dp"
                     app:layout_constraintStart_toEndOf="@id/imageViewTomato"
                     app:layout_constraintTop_toBottomOf="@+id/textViewTomato" />
-
-                <ImageView
-                    android:id="@+id/imageViewCloseTomatoBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/ic_close_mini"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    -->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="120dp"

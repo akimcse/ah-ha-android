@@ -14,6 +14,7 @@ import com.example.ahha_android.util.setStatusBarColor
 class PlantExchangeFragment : Fragment() {
     private lateinit var binding: FragmentPlantExchangeBinding
     lateinit var navController: NavController
+    private var sum = 0;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,53 +45,68 @@ class PlantExchangeFragment : Fragment() {
     }
 
     private fun countBroccoliNum(){
-        val broccoliNum = binding.textViewBroccoliNum
         var num = 0;
 
         binding.textViewBroccoliMinus.setOnClickListener{
             if(num > 0){
                 num--
+                sum--
             }
-            broccoliNum.text = num.toString()
+            binding.textViewBroccoliNum.text = num.toString()
+            binding.textViewPossibleSum.text = sum.toString()
         }
 
         binding.textViewBroccoliPlus.setOnClickListener{
-            num++
-            broccoliNum.text = num.toString()
+            if(sum < 4){
+                num++
+                sum++
+            }
+            binding.textViewBroccoliNum.text = num.toString()
+            binding.textViewPossibleSum.text = sum.toString()
         }
     }
 
     private fun countGreenOnionNum(){
-        val greenOnionNum = binding.textViewGreenOnionNum
         var num = 0;
 
         binding.textViewGreenOnionMinus.setOnClickListener{
             if(num > 0){
                 num--
+                sum--
             }
-            greenOnionNum.text = num.toString()
+            binding.textViewGreenOnionNum.text = num.toString()
+            binding.textViewPossibleSum.text = sum.toString()
         }
 
         binding.textViewGreenOnionPlus.setOnClickListener{
-            num++
-            greenOnionNum.text = num.toString()
+            if(sum < 4){
+                num++
+                sum++
+            }
+            binding.textViewGreenOnionNum.text = num.toString()
+            binding.textViewPossibleSum.text = sum.toString()
         }
     }
 
     private fun countTomatoNum(){
-        val tomatoNum = binding.textViewTomatoNum
         var num = 0;
 
         binding.textViewTomatoMinus.setOnClickListener{
             if(num > 0){
                 num--
+                sum--
             }
-            tomatoNum.text = num.toString()
+            binding.textViewTomatoNum.text = num.toString()
+            binding.textViewPossibleSum.text = sum.toString()
         }
 
         binding.textViewTomatoPlus.setOnClickListener{
-            num++
-            tomatoNum.text = num.toString()
+            if(sum < 4){
+                num++
+                sum++
+            }
+            binding.textViewTomatoNum.text = num.toString()
+            binding.textViewPossibleSum.text = sum.toString()
         }
     }
 }
