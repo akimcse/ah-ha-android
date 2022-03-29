@@ -28,7 +28,7 @@ class SettingViewModel : ViewModel() {
     }
 
     private fun initNotificationCount() {
-        _notificationCount.value = 5
+        _notificationCount.value = 1
     }
 
     fun increaseNotificationCount() {

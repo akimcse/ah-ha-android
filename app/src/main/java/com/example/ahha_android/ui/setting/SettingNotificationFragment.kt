@@ -1,6 +1,7 @@
 package com.example.ahha_android.ui.setting
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,8 @@ import kotlin.properties.Delegates
 class SettingNotificationFragment : Fragment() {
     private lateinit var binding: FragmentSettingNotificationBinding
     private val viewModel: SettingViewModel by viewModels()
-    private var notificationLimit by Delegates.notNull<Int>()
+    var notificationOn: Boolean = true
+    var notificationLimit = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,19 +36,38 @@ class SettingNotificationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getNotificationOption()
+        initClickListener()
     }
 
-    private fun getNotificationOption(){
-        val notificationOn = arguments?.getString("notificationOn")
+    private fun getNotificationOption() {
+        binding.switchPushNotification.setOnClickListener {
+            notificationOn = !notificationOn
 
-        if(binding.switchPushNotification.isChecked){
-            notificationLimit > 0
-        }else{
-            notificationLimit = 0
+            if (notificationOn) {
+                viewModel.notificationCount.observe(viewLifecycleOwner) {
+                    notificationLimit = it
+                }
+                Log.d("***************On", notificationLimit.toString())
+            } else {
+                notificationLimit = 0
+                Log.d("***************Off", notificationLimit.toString())
+            }
         }
+    }
 
-        if (notificationOn != null) {
-            viewModel.changeNotificationSetting(notificationOn, notificationLimit)
+    private fun initClickListener() {
+        val notificationString = arguments?.getString("notificationString")
+
+        binding.textViewComplete.setOnClickListener {
+            Log.d("***********************", "send to server")
+            Log.d("*********notificationOn", notificationString.toString())
+            Log.d("******notificationLimit", notificationLimit.toString())
+
+            if (notificationString != null) {
+                viewModel.changeNotificationSetting(notificationString, notificationLimit)
+            } else {
+                Log.d("**setNotificationOption", "failed")
+            }
         }
     }
 }

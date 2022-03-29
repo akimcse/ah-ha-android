@@ -1,6 +1,7 @@
 package com.example.ahha_android.ui.setting
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,8 @@ class SettingFragment : Fragment() {
     private lateinit var binding: FragmentSettingBinding
     private val viewModel: SettingViewModel by viewModels()
     lateinit var navController: NavController
-    private lateinit var notificationOn: String
+    private var notificationOn: Boolean = true
+    private var notificationString: String = "YES"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,30 +36,35 @@ class SettingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        initClickListener()
         getNotificationOption()
+        initClickListener()
+    }
+
+
+    private fun getNotificationOption(){
+        binding.switchInfoNotification.setOnClickListener {
+            notificationOn = !notificationOn
+
+            if(notificationOn){
+                notificationString = "YES"
+                Log.d("***************checked", notificationString)
+            }else{
+                notificationString = "No"
+                Log.d("***************checked", notificationString)
+            }
+        }
     }
 
     private fun initClickListener(){
         binding.linearLayoutMailNotificationMenu.setOnClickListener{
-            val bundle = bundleOf(notificationOn to null)
+            Log.d("*********notificationOn",notificationString)
+
+            val bundle = Bundle()
+            bundle.putString("notificationString", notificationString)
+
             navController.navigate(
                 R.id.actionSettingFragmentToSettingNotificationFragment,
                 bundle
-            )
-        }
-    }
-
-    private fun getNotificationOption(){
-        if(binding.switchInfoNotification.isChecked){
-            notificationOn = "YES"
-        }else{
-            notificationOn = "No"
-        }
-
-        viewModel.notificationCount.value?.let {
-            viewModel.changeNotificationSetting(notificationOn,
-                it
             )
         }
     }
