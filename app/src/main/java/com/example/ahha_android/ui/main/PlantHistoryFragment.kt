@@ -13,6 +13,7 @@ import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentPlantHistoryBinding
 import com.example.ahha_android.ui.main.adapter.PlantHistoryAdapter
 import com.example.ahha_android.ui.viewmodel.PlantHistoryViewModel
+import com.example.ahha_android.util.setStatusBarColor
 
 class PlantHistoryFragment : Fragment() {
     private lateinit var binding: FragmentPlantHistoryBinding
@@ -25,6 +26,7 @@ class PlantHistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPlantHistoryBinding.inflate(inflater, container, false)
+        setStatusBarColor(requireActivity(), R.color.white)
 
         initRecyclerView()
         addObserver()

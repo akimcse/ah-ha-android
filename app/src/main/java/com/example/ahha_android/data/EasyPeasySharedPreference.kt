@@ -9,6 +9,7 @@ object EasyPeasySharedPreference {
 
     private const val PREFERENCES_NAME = "EASY_PEASY_PREFERENCES"
     private const val KEY_ACCESS_TOKEN = "KEY_ACCESS_TOKEN"
+    private const val KEY_PUSH_TOKEN = "KEY_PUSH_TOKEN"
     private const val KEY_ON_BOARDING_VISIT = "KEY_ON_BOARDING_VISIT"
 
     fun init(context: Context) {
@@ -38,4 +39,16 @@ object EasyPeasySharedPreference {
     }
 
     fun getOnBoardingVisit(): Boolean = preferences.getBoolean(KEY_ON_BOARDING_VISIT, false)
+
+    fun setPushToken(token: String?) {
+        preferences.edit {
+            if (token == null) {
+                remove(KEY_PUSH_TOKEN)
+            } else {
+                putString(KEY_PUSH_TOKEN, token)
+            }
+        }
+    }
+
+    fun getPushToken(): String? = preferences.getString(KEY_PUSH_TOKEN, null)
 }
