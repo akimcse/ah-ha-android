@@ -22,7 +22,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginVertical="8dp"
-                android:background="@drawable/oval_plant_history_front"
                 android:elevation="5dp" />
 
             <ImageView

@@ -37,7 +37,7 @@ class PlantHistoryViewHolder(
     private lateinit var animationFromMiddle: Animation
     private var isFrontOfCardShowing = true
     private lateinit var plantKind: Plant
-    private val exchangedIndex = listOf(0, 2)
+    private val exchangedIndex = listOf(0, 1, 4)
     private var pos = -1
 
     fun bind(data: PlantHistoryData, position: Int) {
@@ -47,6 +47,12 @@ class PlantHistoryViewHolder(
         binding.imageViewPlant.setDrawableImage(data.kind.getPlantImage())
         plantKind = data.kind
         pos = position
+
+        if (exchangedIndex.contains(pos)) {
+            binding.viewOval.setBackgroundResource(R.drawable.oval_plant_history_front_checked)
+        } else {
+            binding.viewOval.setBackgroundResource(R.drawable.oval_plant_history_front)
+        }
 
         animationToMiddle = AnimationUtils.loadAnimation(context, R.anim.to_middle)
         animationToMiddle.setAnimationListener(this)
