@@ -49,12 +49,19 @@ class SettingViewModel : ViewModel() {
         }
     }
 
-    fun changeNotificationSetting(notification: String, notificationLimit:Int) = viewModelScope.launch(
-        Dispatchers.IO) {
-        try {
-            _notificationSetting.postValue(RetrofitBuilder.userService.editNotification(token, RequestNotificationUpdateData(notification.toString(), notificationLimit)))
-        } catch (e:HttpException){
+    fun changeNotificationSetting(notification: String, notificationLimit: Int) =
+        viewModelScope.launch(
+            Dispatchers.IO
+        ) {
+            try {
+                _notificationSetting.postValue(
+                    RetrofitBuilder.userService.editNotification(
+                        token,
+                        RequestNotificationUpdateData(notification, notificationLimit)
+                    )
+                )
+            } catch (e: HttpException) {
 
+            }
         }
-    }
 }
