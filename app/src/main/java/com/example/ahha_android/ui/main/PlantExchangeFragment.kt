@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentPlantExchangeBinding
+import com.example.ahha_android.util.setStatusBarColor
 
 class PlantExchangeFragment : Fragment() {
     private lateinit var binding: FragmentPlantExchangeBinding
@@ -20,6 +21,7 @@ class PlantExchangeFragment : Fragment() {
 
     ): View? {
         binding = FragmentPlantExchangeBinding.inflate(inflater, container, false)
+        setStatusBarColor(requireActivity(), R.color.white)
 
         setImage()
         countBroccoliNum()

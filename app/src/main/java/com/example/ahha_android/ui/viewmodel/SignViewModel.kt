@@ -7,9 +7,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ahha_android.R
-import com.example.ahha_android.data.model.request.RequestPlantUpdateData
-import com.example.ahha_android.data.model.response.ResponsePlantData
-import com.example.ahha_android.data.model.response.ResponsePlantUpdateData
+import com.example.ahha_android.data.EasyPeasySharedPreference
+import com.example.ahha_android.data.model.request.RequestLoginData
+import com.example.ahha_android.data.model.request.RequestPlantCreateData
+import com.example.ahha_android.data.model.response.ResponsePlantCreateData
 import com.example.ahha_android.data.service.RetrofitBuilder
 import com.example.ahha_android.data.vo.SignPlantData
 import kotlinx.coroutines.Dispatchers
@@ -21,22 +22,46 @@ class SignViewModel(application: Application) : AndroidViewModel(application) {
     val characterList: LiveData<List<SignPlantData>>
         get() = _characterList
 
-    private val _newPlant = MutableLiveData<ResponsePlantUpdateData>()
-    val newPlant: LiveData<ResponsePlantUpdateData>
+    private val _newPlant = MutableLiveData<ResponsePlantCreateData>()
+    val newPlant: LiveData<ResponsePlantCreateData>
         get() = _newPlant
 
-    private val token =
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
+    private val _hasPlant = MutableLiveData<Boolean>()
+    val hasPlant: LiveData<Boolean>
+        get() = _hasPlant
+
+    private val _accessToken = MutableLiveData<String?>()
+    val accessToken: LiveData<String?>
+        get() = _accessToken
+
+    fun loginUser(authCode: String?, pushToken: String) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            if (authCode == null) return@launch
+            val response = RetrofitBuilder.userService.loginUser(
+                RequestLoginData(
+                    authorizationCode = authCode,
+                    pushToken = pushToken
+                )
+            )
+            _hasPlant.postValue(response.data.hasPlant)
+            _accessToken.postValue(response.data.accessToken)
+        } catch (e: HttpException) {
+            e.printStackTrace()
+        }
+    }
 
     fun createPlant(name: Editable, kind: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
+            val token = _accessToken.value
+            saveUserAccessToken(token)
             _newPlant.postValue(
-                RetrofitBuilder.plantService.editPlant(
-                    token,
-                    RequestPlantUpdateData(name.toString(), kind)
+                RetrofitBuilder.plantService.createPlant(
+                    "Bearer ${_accessToken.value}",
+                    RequestPlantCreateData(name.toString(), kind)
                 )
             )
         } catch (e: HttpException) {
+            e.printStackTrace()
         }
     }
 
@@ -45,7 +70,19 @@ class SignViewModel(application: Application) : AndroidViewModel(application) {
         _characterList.value = mutableListOf(
             SignPlantData("대파", R.drawable.ic_green_onion_level_5),
             SignPlantData("토마토", R.drawable.ic_tomato_level_5),
-            SignPlantData("브로콜리", R.drawable.ic_broccoli_level_5,
-        ))
+            SignPlantData(
+                "브로콜리", R.drawable.ic_broccoli_level_5,
+            )
+        )
+    }
+
+    fun setAccessToken(token: String?) {
+        _accessToken.value = token
+    }
+
+    fun saveUserAccessToken(token: String?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            EasyPeasySharedPreference.setAccessToken(token)
+        }
     }
 }

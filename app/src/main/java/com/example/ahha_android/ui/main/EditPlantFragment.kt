@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -15,19 +17,21 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ahha_android.R
+import com.example.ahha_android.data.type.Plant
 import com.example.ahha_android.databinding.FragmentEditPlantBinding
 import com.example.ahha_android.databinding.FragmentSignPlantBinding
 import com.example.ahha_android.ui.sign.adapter.SignPlantAdapter
 import com.example.ahha_android.ui.viewmodel.EditPlantViewModel
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import com.example.ahha_android.util.setStatusBarColor
 import java.lang.Math.abs
 
 class EditPlantFragment : Fragment() {
     private lateinit var binding: FragmentEditPlantBinding
     private val viewModel: EditPlantViewModel by viewModels()
     lateinit var navController: NavController
-    lateinit var kind: String
+    private var kind = " "
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +40,7 @@ class EditPlantFragment : Fragment() {
         binding = FragmentEditPlantBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.white)
         return binding.root
     }
 
@@ -47,84 +52,76 @@ class EditPlantFragment : Fragment() {
         viewModel.setCharacterList()
         viewModel.fetchPlant()
 
-        setCharacterAdapter()
         setCharacterObserve()
+        setVegeButton()
+        setFinishButton()
     }
 
-    private fun setCharacterAdapter() {
-        val characterListAdapter = SignPlantAdapter()
-        binding.viewPager.adapter = characterListAdapter
-        // 관리하는 페이지 수. default = 1
-        binding.viewPager.offscreenPageLimit = 4
-        binding.viewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-        // item_view 간의 양 옆 여백을 상쇄할 값
-        val offsetBetweenPages =
-            resources.getDimensionPixelOffset(R.dimen.offsetBetweenPages).toFloat()
-        binding.viewPager.setPageTransformer { page, position ->
-            val myOffset = position * -(5 * offsetBetweenPages)
-            if (position < -1) {
-                page.translationX = -myOffset
-            } else if (position <= 1) {
-                // Paging 시 Y축 Animation 배경색을 약간 연하게 처리
-                val scaleFactor = 0.8f.coerceAtLeast(1 - abs(position))
-                page.translationX = myOffset
-                page.scaleY = scaleFactor
-                page.alpha = scaleFactor
-            } else {
-                page.alpha = 0f
-                page.translationX = myOffset
-            }
+    private fun setVegeButton() {
+        binding.buttonBroccoli.setOnClickListener {
+            kind = "BROCCOLI"
+            binding.buttonBroccoli.isSelected = true
+            binding.buttonGreenOnion.isSelected = false
+            binding.buttonTomato.isSelected = false
+            setPlantObserve(kind)
+            Log.d("*************clicked","broccoli")
         }
 
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            // Paging 완료되면 호출
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                Log.d("ViewPagerFragment", "Page ${position + 1}")
+        binding.buttonGreenOnion.setOnClickListener {
+            kind = "GREENONION"
+            binding.buttonGreenOnion.isSelected = true
+            binding.buttonBroccoli.isSelected = false
+            binding.buttonTomato.isSelected = false
+            setPlantObserve(kind)
+            Log.d("*************clicked","green onion")
+        }
 
-                when (position + 1) {
-                    1 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_green_onion_level_5)
-                    }
-                    2 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_tomato_level_5)
-                    }
-                    3 -> {
-                        binding.imageViewCharacter.setDrawableImage(R.drawable.ic_broccoli_level_5)
-                    }
-                }
+        binding.buttonTomato.setOnClickListener {
+            kind = "TOMATO"
+            binding.buttonTomato.isSelected = true
+            binding.buttonGreenOnion.isSelected = false
+            binding.buttonBroccoli.isSelected = false
+            setPlantObserve(kind)
+            Log.d("*************clicked","tomato")
+        }
+    }
 
-                binding.buttonFinish.setOnClickListener {
-                    navController.popBackStack()
-                    val name = binding.editTextCharacterName.text
-                    when (position + 1) {
-                        1 -> {
-                            kind = "GREENONION"
-                        }
-                        2 -> {
-                            kind = "TOMATO"
-                        }
-                        3 -> {
-                            kind = "BROCCOLI"
-                        }
-                    }
-                    viewModel.changePlantInfo(name, kind)
-                }
-
-                if (position != 0) {
-                    binding.buttonFinish.isActivated = true
-                }
+    private fun setFinishButton(){
+        binding.editTextCharacterName.doAfterTextChanged {
+            if (!binding.editTextCharacterName.text.isNullOrBlank()) {
+                binding.buttonFinish.isActivated = true
+                binding.buttonFinish.isEnabled = true
+                finishClickListener()
+            } else {
+                binding.buttonFinish.isActivated = false
+                binding.buttonFinish.isEnabled = false
             }
-        })
+        }
+    }
+
+    private fun finishClickListener(){
+        binding.buttonFinish.setOnClickListener {
+            navController.popBackStack()
+            val name = binding.editTextCharacterName.text
+            viewModel.changePlantInfo(name, kind)
+        }
+    }
+
+    private fun setPlantObserve(kind:String){
+        when(kind){
+            "BROCCOLI" -> viewModel.plantLevel.value?.let { level ->
+                binding.imageViewCharacter.setDrawableImage(Plant.BROCCOLI.getPlantImageByLevel(level))
+            }
+            "GREENONION" -> viewModel.plantLevel.value?.let { level ->
+                binding.imageViewCharacter.setDrawableImage(Plant.GREENONION.getPlantImageByLevel(level))
+            }
+            "TOMATO" -> viewModel.plantLevel.value?.let { level ->
+                binding.imageViewCharacter.setDrawableImage(Plant.TOMATO.getPlantImageByLevel(level))
+            }
+        }
     }
 
     private fun setCharacterObserve() {
-        viewModel.characterList.observe(viewLifecycleOwner) { characterList ->
-            with(binding.viewPager.adapter as SignPlantAdapter) {
-                setCharacter(characterList)
-            }
-        }
-
         viewModel.plantKind.observe(viewLifecycleOwner) {
             viewModel.plantLevel.value?.let { level ->
                 binding.imageViewCharacter.setDrawableImage(it.getPlantImageByLevel(level))

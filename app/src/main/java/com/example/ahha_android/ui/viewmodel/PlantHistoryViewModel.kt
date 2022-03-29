@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.data.response.PlantHistoryResponseData
 import com.example.ahha_android.data.service.RetrofitBuilder
 import com.example.ahha_android.data.vo.PlantHistoryData
@@ -16,9 +17,7 @@ class PlantHistoryViewModel : ViewModel() {
     val plantHistoryData: LiveData<List<PlantHistoryData>>
         get() = _plantHistoryData
 
-    // FIXME
-    private val token =
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
+    private val token = "Bearer ${EasyPeasySharedPreference.getAccessToken()}"
 
     init {
         viewModelScope.launch(Dispatchers.IO) {

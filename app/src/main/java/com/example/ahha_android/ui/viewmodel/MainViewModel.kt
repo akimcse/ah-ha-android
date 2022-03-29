@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.data.response.PlantData
 import com.example.ahha_android.data.response.UserData
 import com.example.ahha_android.data.service.RetrofitBuilder
@@ -15,6 +16,8 @@ import retrofit2.HttpException
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val context = application
+
+    private val token = "Bearer ${EasyPeasySharedPreference.getAccessToken()}"
 
     private val _userInfo = MutableLiveData<UserData>()
 
@@ -43,10 +46,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _isLastPosition = MutableLiveData(false)
     val isLastPosition: LiveData<Boolean> = _isLastPosition
-
-    // FIXME
-    private val token =
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY0Mzk4OTg2MiwiZXhwIjoxNjc1NTI1ODYyfQ.yqv6dqYNbIPnAeLMi0-T6N7Bjf2GlcEsNJ8ysh9cWy8"
 
     suspend fun fetchUser() {
         try {

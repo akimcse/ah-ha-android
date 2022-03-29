@@ -6,7 +6,7 @@ data class ResponsePlantCreateData(
     @SerializedName("code")
     val code: Int,
     @SerializedName("data")
-    val `data`: CreateData,
+    val data: CreateData,
     @SerializedName("message")
     val message: String
 )

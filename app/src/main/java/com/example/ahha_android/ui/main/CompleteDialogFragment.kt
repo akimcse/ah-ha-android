@@ -15,6 +15,7 @@ import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentCompleteDialogBinding
 import com.example.ahha_android.ui.viewmodel.MainViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import com.example.ahha_android.util.setStatusBarColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -29,6 +30,7 @@ class CompleteDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCompleteDialogBinding.inflate(inflater, container, false)
+        setStatusBarColor(requireActivity(), R.color.blue)
 
         setObserver()
 

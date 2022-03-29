@@ -14,6 +14,7 @@ import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.databinding.FragmentMainBinding
 import com.example.ahha_android.ui.viewmodel.MainViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import com.example.ahha_android.util.setStatusBarColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -29,6 +30,7 @@ class MainFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.blue)
 
         init()
         addObserver()
@@ -68,11 +70,9 @@ class MainFragment : Fragment() {
         viewModel.ordinalNumber.observe(viewLifecycleOwner) {
             binding.textViewPlantNumber.text = getString(R.string.main_plant_number_format, it)
         }
-
         viewModel.mailCount.observe(viewLifecycleOwner) {
             binding.textViewMailCount.text = getString(R.string.main_mail_count_format, it)
         }
-
         viewModel.plantKind.observe(viewLifecycleOwner) {
             viewModel.plantLevel.value?.let { level ->
                 binding.imageViewPlant.setDrawableImage(it.getPlantImageByLevel(level))
