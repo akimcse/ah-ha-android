@@ -42,7 +42,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         navController = Navigation.findNavController(view)
     }
 
@@ -82,9 +81,9 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun allGrownUp(){
+    private fun allGrownUp() {
         viewModel.plantScore.observe(viewLifecycleOwner) {
-            Log.d("**************Score:", it.toString())
+            Log.d("***************Score", it.toString())
             if (it >= 25) {
                 showDialog()
             }
@@ -101,6 +100,7 @@ class MainFragment : Fragment() {
             override fun onExchangeClicked() {
                 navController.navigate(R.id.actionMainFragmentToPlantExchangeFragment, bundle)
             }
+
             override fun onFinishClicked() {
                 navController.navigate(R.id.actionMainFragmentToSignPlantFragment, bundle)
             }

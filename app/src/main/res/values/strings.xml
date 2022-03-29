@@ -78,7 +78,7 @@
     <!-- CompleteDialogFragment -->
     <string name="complete_dialog_congratulations">Congratulations!</string>
     <string name="complete_dialog_done">! 다 자랐어요</string>
-    <string name="complete_dialog_close">닫기</string>
+    <string name="complete_dialog_close">새로 키우기</string>
     <string name="complete_dialog_exchange">식물 교환</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -53,7 +53,7 @@ class CompleteDialogFragment : DialogFragment() {
         }
 
         binding.buttonFinish.setOnClickListener {
-            Log.d("************clicked","닫기")
+            Log.d("************clicked","새로 키우기")
             buttonClickListener.onFinishClicked()
             dismiss()
         }
