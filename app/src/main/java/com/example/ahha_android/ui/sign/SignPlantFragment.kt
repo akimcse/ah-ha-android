@@ -5,35 +5,38 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import androidx.viewpager2.widget.ViewPager2.*
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantBinding
 import com.example.ahha_android.ui.sign.adapter.SignPlantAdapter
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import com.example.ahha_android.util.setStatusBarColor
 import java.lang.Math.abs
 
 class SignPlantFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantBinding
-    private val viewModel: SignViewModel by viewModels()
+    private val viewModel: SignViewModel by activityViewModels()
     lateinit var navController: NavController
     private var scrollPosition: Int = 0
+    private lateinit var callback: OnBackPressedCallback
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignPlantBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.white)
         return binding.root
     }
 
@@ -43,8 +46,25 @@ class SignPlantFragment : Fragment() {
         navController = Navigation.findNavController(view)
         viewModel.setCharacterList()
 
+        addListener()
+        addBackPressedCallback()
         setCharacterAdapter()
         setCharacterObserve()
+    }
+
+    private fun addListener() {
+        binding.imageViewBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun addBackPressedCallback() {
+        callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     private fun setCharacterAdapter() {
@@ -98,7 +118,10 @@ class SignPlantFragment : Fragment() {
                     binding.buttonFinish.isActivated = true
                     binding.buttonFinish.setOnClickListener {
                         val bundle = bundleOf("characterNum" to scrollPosition + 1)
-                        navController.navigate(R.id.actionSignPlantFragmentToSignPlantNameFragment, bundle)
+                        navController.navigate(
+                            R.id.actionSignPlantFragmentToSignPlantNameFragment,
+                            bundle
+                        )
                     }
                 }
             }

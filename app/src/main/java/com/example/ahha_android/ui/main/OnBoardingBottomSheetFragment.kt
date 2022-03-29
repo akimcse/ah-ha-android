@@ -12,6 +12,7 @@ import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.databinding.FragmentOnBoardingBottomSheetBinding
 import com.example.ahha_android.ui.main.adapter.OnBoardingAdapter
 import com.example.ahha_android.ui.viewmodel.MainViewModel
+import com.example.ahha_android.util.setStatusBarColor
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -33,6 +34,7 @@ class OnBoardingBottomSheetFragment : BottomSheetDialogFragment() {
         binding = FragmentOnBoardingBottomSheetBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        setStatusBarColor(requireActivity(), R.color.blue)
 
         initViewPager()
         initTabLayoutIndicator()

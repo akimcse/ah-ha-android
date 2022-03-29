@@ -5,11 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentPlantExchangeBinding
+import com.example.ahha_android.util.setStatusBarColor
 
 class PlantExchangeFragment : Fragment() {
     private lateinit var binding: FragmentPlantExchangeBinding
+    lateinit var navController: NavController
     private var sum = 0;
 
     override fun onCreateView(
@@ -18,6 +22,7 @@ class PlantExchangeFragment : Fragment() {
 
     ): View? {
         binding = FragmentPlantExchangeBinding.inflate(inflater, container, false)
+        setStatusBarColor(requireActivity(), R.color.white)
 
         setImage()
         countBroccoliNum()
@@ -25,6 +30,12 @@ class PlantExchangeFragment : Fragment() {
         countTomatoNum()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
     }
 
     private fun setImage() {

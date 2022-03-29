@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentCompleteDialogBinding
 import com.example.ahha_android.ui.viewmodel.MainViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
+import com.example.ahha_android.util.setStatusBarColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -27,6 +30,7 @@ class CompleteDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCompleteDialogBinding.inflate(inflater, container, false)
+        setStatusBarColor(requireActivity(), R.color.blue)
 
         setObserver()
 
@@ -44,14 +48,14 @@ class CompleteDialogFragment : DialogFragment() {
 
         binding.buttonExchange.setOnClickListener {
             Log.d("************clicked","식물교환")
+            buttonClickListener.onExchangeClicked()
             dismiss()
-            onButtonExchange()
         }
 
         binding.buttonFinish.setOnClickListener {
             Log.d("************clicked","닫기")
+            buttonClickListener.onFinishClicked()
             dismiss()
-            onButtonFinish()
         }
     }
 
@@ -66,6 +70,17 @@ class CompleteDialogFragment : DialogFragment() {
         _binding = null
     }
 
+    interface OnButtonClickListener {
+        fun onExchangeClicked()
+        fun onFinishClicked()
+    }
+
+    private lateinit var buttonClickListener: OnButtonClickListener
+
+    fun setButtonClickListener(buttonClickListener: OnButtonClickListener) {
+        this.buttonClickListener = buttonClickListener
+    }
+
     private fun setObserver(){
         viewModel.plantKind.observe(viewLifecycleOwner) {
             viewModel.plantLevel.value?.let { level ->
@@ -78,13 +93,5 @@ class CompleteDialogFragment : DialogFragment() {
                 binding.textViewTitleName.text = name
             }
         }
-    }
-
-    private fun onButtonExchange(){
-        // 식물 교환 뷰로 navigation
-    }
-
-    private fun onButtonFinish(){
-        // 로그인 마친 상태 -> 내 캐릭터 생성 페이지로 넘어갈 때 signActivity 어떻게 되는지
     }
 }
