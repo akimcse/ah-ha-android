@@ -80,7 +80,4 @@
     <string name="complete_dialog_done">! 다 자랐어요</string>
     <string name="complete_dialog_close">닫기</string>
     <string name="complete_dialog_exchange">식물 교환</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
