@@ -74,10 +74,11 @@
     <string name="plant_exchange_tomato">Tomato</string>
     <string name="plant_exchange_tomato_info"></string>
     <string name="plant_exchange_delivery">Apply</string>
+    <string name="plant_exchange_location">1600 Amphitheatre Parkway Mountain View, CA 94043 USA</string>
 
     <!-- CompleteDialogFragment -->
     <string name="complete_dialog_congratulations">Congratulations!</string>
-    <string name="complete_dialog_done">It\'s all grown up.</string>
-    <string name="complete_dialog_close">Close</string>
+    <string name="complete_dialog_done">&#160;is all grown up.</string>
+    <string name="complete_dialog_close">New Plant</string>
     <string name="complete_dialog_exchange">Exchange</string>
 </resources>
