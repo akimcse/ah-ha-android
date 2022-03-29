@@ -28,7 +28,8 @@ class PlantExchangeFragment : Fragment() {
         countBroccoliNum()
         countGreenOnionNum()
         countTomatoNum()
-        
+        initClickListener()
+
         return binding.root
     }
 
@@ -107,6 +108,15 @@ class PlantExchangeFragment : Fragment() {
             }
             binding.textViewTomatoNum.text = num.toString()
             binding.textViewPossibleSum.text = sum.toString()
+        }
+    }
+
+    private fun initClickListener(){
+        binding.imageViewGps.setOnClickListener {
+            binding.EditTextAddress.setText(R.string.plant_exchange_location)
+        }
+        binding.textViewLocation.setOnClickListener {
+            binding.EditTextAddress.setText(R.string.plant_exchange_location)
         }
     }
 }
