@@ -1,8 +1,10 @@
 package com.example.ahha_android.data.service
 
 import com.example.ahha_android.data.model.request.RequestPlantCreateData
+import com.example.ahha_android.data.model.request.RequestPlantResetData
 import com.example.ahha_android.data.model.request.RequestPlantUpdateData
 import com.example.ahha_android.data.model.response.ResponsePlantCreateData
+import com.example.ahha_android.data.model.response.ResponsePlantResetData
 import com.example.ahha_android.data.model.response.ResponsePlantUpdateData
 import retrofit2.http.*
 import com.example.ahha_android.data.response.ResponsePlantData
@@ -26,4 +28,10 @@ interface PlantService {
     suspend fun getPlant(
         @Header("Authorization") token: String
     ): ResponsePlantData
+
+    @POST("plant/reset")
+    suspend fun resetPlant(
+        @Header("Authorization") token: String,
+        @Body body: RequestPlantResetData
+    ): ResponsePlantResetData
 }

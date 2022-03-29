@@ -10,7 +10,9 @@ import com.example.ahha_android.R
 import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.data.model.request.RequestLoginData
 import com.example.ahha_android.data.model.request.RequestPlantCreateData
+import com.example.ahha_android.data.model.request.RequestPlantResetData
 import com.example.ahha_android.data.model.response.ResponsePlantCreateData
+import com.example.ahha_android.data.model.response.ResponsePlantResetData
 import com.example.ahha_android.data.service.RetrofitBuilder
 import com.example.ahha_android.data.vo.SignPlantData
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +27,10 @@ class SignViewModel(application: Application) : AndroidViewModel(application) {
     private val _newPlant = MutableLiveData<ResponsePlantCreateData>()
     val newPlant: LiveData<ResponsePlantCreateData>
         get() = _newPlant
+
+    private val _resetPlant = MutableLiveData<ResponsePlantResetData>()
+    val resetPlant: LiveData<ResponsePlantResetData>
+        get() = _resetPlant
 
     private val _hasPlant = MutableLiveData<Boolean>()
     val hasPlant: LiveData<Boolean>
@@ -58,6 +64,21 @@ class SignViewModel(application: Application) : AndroidViewModel(application) {
                 RetrofitBuilder.plantService.createPlant(
                     "Bearer ${_accessToken.value}",
                     RequestPlantCreateData(name.toString(), kind)
+                )
+            )
+        } catch (e: HttpException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun resetPlant(name: Editable, kind: String) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            val token = _accessToken.value
+            saveUserAccessToken(token)
+            _resetPlant.postValue(
+                RetrofitBuilder.plantService.resetPlant(
+                    "Bearer ${_accessToken.value}",
+                    RequestPlantResetData(name.toString(), kind)
                 )
             )
         } catch (e: HttpException) {

@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSignPlantNameBinding
 import com.example.ahha_android.ui.main.MainActivity
+import com.example.ahha_android.ui.viewmodel.EditPlantViewModel
 import com.example.ahha_android.ui.viewmodel.SignViewModel
 import com.example.ahha_android.util.BindingAdapter.setDrawableImage
 import com.example.ahha_android.util.setStatusBarColor
@@ -19,6 +20,7 @@ import com.example.ahha_android.util.setStatusBarColor
 class SignPlantNameFragment : Fragment() {
     private lateinit var binding: FragmentSignPlantNameBinding
     private val viewModel: SignViewModel by activityViewModels()
+    private val editViewModel: EditPlantViewModel by activityViewModels()
     lateinit var kind: String
 
     override fun onCreateView(
@@ -69,7 +71,6 @@ class SignPlantNameFragment : Fragment() {
     private fun initClickListener(){
         binding.buttonFinish.setOnClickListener {
             val characterNum = arguments?.getInt("characterNum")
-            val name = binding.editTextCharacterName.text
             if (characterNum != null) {
                 when (characterNum) {
                     1 -> {
@@ -83,11 +84,23 @@ class SignPlantNameFragment : Fragment() {
                     }
                 }
             }
-            viewModel.createPlant(name, kind)
+
+            makePlant()
 
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
+        }
+    }
+
+    private fun makePlant(){
+        val name = binding.editTextCharacterName.text
+        editViewModel.ordinalNumber.observe(viewLifecycleOwner){
+            if(it == 0){
+                viewModel.createPlant(name, kind)
+            } else {
+                viewModel.resetPlant(name, kind)
+            }
         }
     }
 }
