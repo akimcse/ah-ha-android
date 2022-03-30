@@ -5,14 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSettingNotificationBinding
 import com.example.ahha_android.ui.viewmodel.SettingViewModel
 import com.example.ahha_android.util.setStatusBarColor
-import kotlin.properties.Delegates
 
 class SettingNotificationFragment : Fragment() {
     private lateinit var binding: FragmentSettingNotificationBinding
@@ -63,6 +62,7 @@ class SettingNotificationFragment : Fragment() {
         val notificationString = arguments?.getString("notificationString")
 
         binding.textViewComplete.setOnClickListener {
+            Toast.makeText(requireContext(), "Modifications Completed!", Toast.LENGTH_SHORT).show()
             Log.d("***********************", "send to server")
             Log.d("*********notificationOn", notificationString.toString())
             Log.d("******notificationLimit", notificationLimit.toString())
