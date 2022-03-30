@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class SettingNotificationFragment : Fragment() {
     private lateinit var binding: FragmentSettingNotificationBinding
     private val viewModel: SettingViewModel by activityViewModels()
-    var notificationOn: Boolean = true
+    var notificationOn: String = "NO"
     private var notificationLimit = 1
     private lateinit var notificationInfo: String
 
@@ -41,6 +41,7 @@ class SettingNotificationFragment : Fragment() {
         setNotificationOption()
         getNotificationOption()
         sendToServer()
+
     }
 
     private fun setNotificationOption() {
@@ -49,32 +50,41 @@ class SettingNotificationFragment : Fragment() {
                 fetchUser()
             }
         }
-    }
 
-    private fun getNotificationOption() {
+        viewModel.notificationInfo.value?.let { Log.d("notificationInfo", it) }
+        viewModel.notificationLimit.value.toString().let { Log.d("notificationLimit", it) }
+
         viewModel.notificationCount.observe(viewLifecycleOwner) {
             notificationLimit = it
         }
 
-        binding.switchPushNotification.setOnClickListener {
-            notificationOn = !notificationOn
+        binding.switchPushNotification.isChecked = viewModel.notificationMailOn.value == "YES"
+    }
 
-            if (notificationOn) {
+    private fun getNotificationOption() {
+        binding.switchPushNotification.setOnCheckedChangeListener { buttonView, isChecked ->
+
+            if(isChecked){
                 viewModel.notificationCount.observe(viewLifecycleOwner) {
                     notificationLimit = it
                 }
+                notificationOn = "YES"
+
                 Log.d("***************On", notificationLimit.toString())
-            } else {
+            }else {
                 notificationLimit = 0
+                notificationOn = "NO"
                 Log.d("***************Off", notificationLimit.toString())
+
             }
         }
     }
 
     private fun sendToServer() {
-        notificationInfo = viewModel.notificationInfo.value.toString()
+        notificationInfo = viewModel.notificationInfo.value!!
 
         binding.textViewComplete.setOnClickListener {
+            viewModel.setNotificationMailOn(notificationOn)
             viewModel.changeNotificationSetting(notificationInfo, notificationLimit)
             Toast.makeText(requireContext(), "Modifications Completed!", Toast.LENGTH_SHORT).show()
             Log.d("*********notificationOn", notificationInfo)

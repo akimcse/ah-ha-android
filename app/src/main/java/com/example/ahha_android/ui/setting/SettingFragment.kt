@@ -21,8 +21,7 @@ class SettingFragment : Fragment() {
     private lateinit var binding: FragmentSettingBinding
     private val viewModel: SettingViewModel by activityViewModels()
     private lateinit var navController: NavController
-    private var notificationOn: Boolean = true
-    private var notificationString: String = "YES"
+    private var notificationInfo: String = "YES"
     private var notificationLimit by Delegates.notNull<Int>()
 
     override fun onCreateView(
@@ -48,27 +47,32 @@ class SettingFragment : Fragment() {
                 fetchUser()
             }
         }
+
+        viewModel.notificationInfo.value?.let { Log.d("notificationInfo", it) }
+        viewModel.notificationLimit.value.toString().let { Log.d("notificationLimit", it) }
+
+        binding.switchInfoNotification.isChecked = viewModel.notificationInfo.value == "YES"
     }
 
     private fun getNotificationOption() {
-        binding.switchInfoNotification.setOnClickListener {
-            notificationOn = !notificationOn
-
-            if (notificationOn) {
-                notificationString = "YES"
+        binding.switchInfoNotification.setOnCheckedChangeListener{ buttonView, isChecked ->
+            if(isChecked){
+                notificationInfo = "YES"
                 sendToServer()
             } else {
-                notificationString = "NO"
+                notificationInfo = "NO"
                 sendToServer()
             }
         }
+
     }
 
     private fun sendToServer() {
         notificationLimit = viewModel.notificationLimit.value!!
 
-        viewModel.changeNotificationSetting(notificationString, notificationLimit)
-        Log.d("*******notificationInfo", notificationString)
+        viewModel.changeNotificationSetting(notificationInfo, notificationLimit)
+        Log.d("*******notificationInfo", notificationInfo)
         Log.d("******notificationLimit", notificationLimit.toString())
+
     }
 }

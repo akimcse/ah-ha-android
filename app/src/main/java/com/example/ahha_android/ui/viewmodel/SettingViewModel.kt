@@ -1,5 +1,6 @@
 package com.example.ahha_android.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,13 +34,10 @@ class SettingViewModel : ViewModel() {
     val notificationLimit: LiveData<Int>
         get() = _notificationLimit
 
-    private val _notificationInfoOn = MutableLiveData<Boolean>()
-    val notificationInfoOn: LiveData<Boolean>
-        get() = _notificationInfoOn
-
-    private val _notificationMailOn = MutableLiveData<Boolean>()
-    val notificationMailOn: LiveData<Boolean>
+    private val _notificationMailOn = MutableLiveData<String>()
+    val notificationMailOn: LiveData<String>
         get() = _notificationMailOn
+
 
     private val token = "Bearer ${EasyPeasySharedPreference.getAccessToken()}"
 
@@ -53,6 +51,13 @@ class SettingViewModel : ViewModel() {
 
     fun setNotificationCount(){
         _notificationCount.value = _notificationLimit.value
+        Log.d("********Count", _notificationCount.value.toString())
+    }
+
+    fun setNotificationMailOn(notificationMailOn: String){
+            _notificationMailOn.value = notificationMailOn
+
+        Log.d("********MailOn", notificationMailOn)
     }
 
     fun increaseNotificationCount() {
