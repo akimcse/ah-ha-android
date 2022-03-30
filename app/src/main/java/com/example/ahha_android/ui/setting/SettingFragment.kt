@@ -49,7 +49,7 @@ class SettingFragment : Fragment() {
                 notificationString = "YES"
                 Log.d("***************checked", notificationString)
             }else{
-                notificationString = "No"
+                notificationString = "NO"
                 Log.d("***************checked", notificationString)
             }
         }

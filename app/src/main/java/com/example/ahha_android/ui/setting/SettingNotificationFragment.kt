@@ -40,6 +40,10 @@ class SettingNotificationFragment : Fragment() {
     }
 
     private fun getNotificationOption() {
+        viewModel.notificationCount.observe(viewLifecycleOwner) {
+            notificationLimit = it
+        }
+
         binding.switchPushNotification.setOnClickListener {
             notificationOn = !notificationOn
 
