@@ -51,9 +51,6 @@ class SettingNotificationFragment : Fragment() {
             }
         }
 
-        viewModel.notificationInfo.value?.let { Log.d("notificationInfo", it) }
-        viewModel.notificationLimit.value.toString().let { Log.d("notificationLimit", it) }
-
         viewModel.notificationCount.observe(viewLifecycleOwner) {
             notificationLimit = it
         }
@@ -63,19 +60,15 @@ class SettingNotificationFragment : Fragment() {
 
     private fun getNotificationOption() {
         binding.switchPushNotification.setOnCheckedChangeListener { buttonView, isChecked ->
-
             if(isChecked){
                 viewModel.notificationCount.observe(viewLifecycleOwner) {
                     notificationLimit = it
                 }
                 notificationOn = "YES"
 
-                Log.d("***************On", notificationLimit.toString())
             }else {
                 notificationLimit = 0
                 notificationOn = "NO"
-                Log.d("***************Off", notificationLimit.toString())
-
             }
         }
     }
@@ -87,8 +80,8 @@ class SettingNotificationFragment : Fragment() {
             viewModel.setNotificationMailOn(notificationOn)
             viewModel.changeNotificationSetting(notificationInfo, notificationLimit)
             Toast.makeText(requireContext(), "Modifications Completed!", Toast.LENGTH_SHORT).show()
-            Log.d("*********notificationOn", notificationInfo)
-            Log.d("******notificationLimit", notificationLimit.toString())
+            Log.d("InfoON", notificationInfo)
+            Log.d("MailLimit", notificationLimit.toString())
         }
 
         viewModel.setNotificationCount()

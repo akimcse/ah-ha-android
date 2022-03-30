@@ -51,13 +51,10 @@ class SettingViewModel : ViewModel() {
 
     fun setNotificationCount(){
         _notificationCount.value = _notificationLimit.value
-        Log.d("********Count", _notificationCount.value.toString())
     }
 
     fun setNotificationMailOn(notificationMailOn: String){
             _notificationMailOn.value = notificationMailOn
-
-        Log.d("********MailOn", notificationMailOn)
     }
 
     fun increaseNotificationCount() {
