@@ -15,8 +15,6 @@ import com.example.ahha_android.data.type.Plant
 import retrofit2.HttpException
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    private val context = application
-
     private val token = "Bearer ${EasyPeasySharedPreference.getAccessToken()}"
 
     private val _userInfo = MutableLiveData<UserData>()
@@ -78,12 +76,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         } catch (e: HttpException) {
             e.printStackTrace()
         }
-    }
-
-    fun goToGmail() {
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse("https://mail.google.com")
-        context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK))
     }
 
     fun setCurrentPositionIsLast(value: Boolean) {

@@ -35,6 +35,7 @@ class MainFragment : Fragment() {
 
         init()
         addObserver()
+        addListener()
         allGrownUp()
 
         return binding.root
@@ -81,6 +82,12 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun addListener() {
+        binding.textViewMailBoxManage.setOnClickListener {
+            goToGmail()
+        }
+    }
+
     private fun allGrownUp() {
         viewModel.plantScore.observe(viewLifecycleOwner) {
             Log.d("***************Score", it.toString())
@@ -106,5 +113,11 @@ class MainFragment : Fragment() {
             }
         })
         fragmentManager?.let { dialogView.show(it, "tag") }
+    }
+
+    private fun goToGmail() {
+        val gmailPackage = "com.google.android.gm"
+        val intent = requireActivity().packageManager.getLaunchIntentForPackage(gmailPackage)
+        startActivity(intent)
     }
 }
