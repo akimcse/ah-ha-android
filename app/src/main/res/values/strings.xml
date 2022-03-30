@@ -74,15 +74,10 @@
     <string name="plant_exchange_tomato_info">토마토 설명</string>
     <string name="plant_exchange_delivery">배송하기</string>
     <string name="plant_exchange_location">서울특별시 강남구 테헤란로 152 22층</string>
-    //구글 코리아 주소 입니다. 영어 버전에서는 구글 본사 주소 1600 Amphitheatre Parkway Mountain View, CA 94043 USA 쓰면 될 것 같아요!
-
 
     <!-- CompleteDialogFragment -->
     <string name="complete_dialog_congratulations">Congratulations!</string>
     <string name="complete_dialog_done">! 다 자랐어요</string>
     <string name="complete_dialog_close">새로 키우기</string>
     <string name="complete_dialog_exchange">식물 교환</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

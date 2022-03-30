@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EasyPeasy</string>
+    <string name="google_login_client_id">545692381135-fvhedorrsrtfdk6q7si4hid5l3j0lu0v.apps.googleusercontent.com</string>
+    <string name="default_notification_channel_id">easy_peasy_channel</string>
+
+    <!-- SignFragment -->
+    <string name="sign_with_google">Sign up with Google account</string>
+    <string name="sign_info"><b>Please sign up with the same email account</b>"you use often.&#10;You can save the environment faster."</string>
+
+    <!-- SignPlantFragment -->
+    <string name="sign_plant_finish">Complete</string>
+    <string name="sign_plant_make_character">Create my character</string>
+    <string name="sign_plant_choose_character">Please choose a plant to grow</string>
+    <string name="sing_plant_naming">Please give me a name it.</string>
+    <string name="sing_plant_name_input">Space for name</string>
+
+    <!-- OnBoardingBottomSheetFragment -->
+    <string name="on_boarding_description_first">Please click manage mailbox button\nto delete your mail.</string>
+    <string name="on_boarding_description_second">The more you delete the mail\nthe more plants grow.</string>
+    <string name="on_boarding_description_third">You can exchange grown plants\nTry raising them at home!</string>
+    <string name="on_boarding_button_next">NEXT</string>
+    <string name="on_boarding_button_close">CLOSE</string>
+
+    <!-- MainFragment -->
+    <string name="main_title_initial">Delete the email, please</string>
+    <string name="main_title">“Saving the earth”</string>
+    <string name="main_plant_number_title">Number of grown plants</string>
+    <string name="main_plant_number_format">%d</string>
+    <string name="main_mail_count_title">Current email count</string>
+    <string name="main_mail_count_format">%d</string>
+    <string name="main_mail_box_manage">Mailbox manage</string>
+    <string name="main_info_icon">i</string>
+
+    <!-- PlantHistoryFragment -->
+    <string name="plant_history_time_format">%s\n~\n%s</string>
+    <string name="plant_history_title">Character History</string>
+    <string name="plant_history_go_to_exchange">Exchange Plants</string>
+
+    <!-- EditPlantFragment -->
+    <string name="edit_plant_finish">Done</string>
+    <string name="edit_plant_make_character">Character Change</string>
+    <string name="edit_plant_broccoli">Broccoli</string>
+    <string name="edit_plant_green_onion">Green\nOnion</string>
+    <string name="edit_plant_tomato">Tomato</string>
+
+    <!-- SettingFragment -->
+    <string name="setting_title">Settings</string>
+    <string name="setting_info_notification_menu_title">Informative Notifications</string>
+    <string name="setting_info_notification_menu_description">how to prevent the data center pollution</string>
+    <string name="setting_mail_notification_menu_title">Notifications for deleting email</string>
+    <string name="setting_mail_notification_menu_description">Range setting for deleting email</string>
+    <string name="setting_switch_on">on</string>
+    <string name="setting_switch_off">off</string>
+
+    <!-- SettingNotificationFragment -->
+    <string name="setting_notification_title">Notifications for deleting email</string>
+    <string name="setting_notification_push_title">Push Notifications</string>
+    <string name="setting_notification_count_title">Range Settings</string>
+    <string name="setting_notification_complete">Complete</string>
+    <string name="setting_notification_minus">-</string>
+    <string name="setting_notification_plus">+</string>
+
+    <!-- PlantExchangeFragment -->
+    <string name="plant_exchange_title">Exchange Plants</string>
+    <string name="plant_exchange_address_title">Set your address</string>
+    <string name="plant_exchange_address_searching">Search by lot number, road name, or building name</string>
+    <string name="plant_exchange_address_location">Set to current location</string>
+    <string name="plant_exchange_possible_number">Exchangeable plants</string>
+    <string name="plant_exchange_broccoli">Broccoli</string>
+    <string name="plant_exchange_broccoli_info"></string>
+    <string name="plant_exchange_green_onion">Green Onion</string>
+    <string name="plant_exchange_green_onion_info"></string>
+    <string name="plant_exchange_tomato">Tomato</string>
+    <string name="plant_exchange_tomato_info"></string>
+    <string name="plant_exchange_delivery">Apply</string>
+    <string name="plant_exchange_location">1600 Amphitheatre Parkway Mountain View, CA 94043 USA</string>
+
+    <!-- CompleteDialogFragment -->
+    <string name="complete_dialog_congratulations">Congratulations!</string>
+    <string name="complete_dialog_done">&#160;is all grown up.</string>
+    <string name="complete_dialog_close">New Plant</string>
+    <string name="complete_dialog_exchange">Exchange</string>
+</resources>

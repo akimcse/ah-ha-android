@@ -7,13 +7,41 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.ItemOnBoardingBinding
+import java.util.*
 
 class OnBoardingAdapter : RecyclerView.Adapter<OnBoardingViewHolder>() {
-    private val data = listOf(
-        OnBoardingContents(R.string.on_boarding_description_first, R.drawable.ic_on_boarding_first),
-        OnBoardingContents(R.string.on_boarding_description_second, R.drawable.ic_on_boarding_second),
-        OnBoardingContents(R.string.on_boarding_description_third, R.drawable.ic_on_boarding_third)
-    )
+    private val data =
+        if (Locale.getDefault().language == "ko") {
+            listOf(
+                OnBoardingContents(
+                    R.string.on_boarding_description_first,
+                    R.drawable.ic_on_boarding_first
+                ),
+                OnBoardingContents(
+                    R.string.on_boarding_description_second,
+                    R.drawable.ic_on_boarding_second
+                ),
+                OnBoardingContents(
+                    R.string.on_boarding_description_third,
+                    R.drawable.ic_on_boarding_third
+                )
+            )
+        } else {
+            listOf(
+                OnBoardingContents(
+                    R.string.on_boarding_description_first,
+                    R.drawable.ic_on_boarding_first_en
+                ),
+                OnBoardingContents(
+                    R.string.on_boarding_description_second,
+                    R.drawable.ic_on_boarding_second
+                ),
+                OnBoardingContents(
+                    R.string.on_boarding_description_third,
+                    R.drawable.ic_on_boarding_third
+                )
+            )
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
         val binding =
