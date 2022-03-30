@@ -10,11 +10,8 @@ import com.example.ahha_android.R
 import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.data.model.request.RequestLoginData
 import com.example.ahha_android.data.model.request.RequestPlantCreateData
-import com.example.ahha_android.data.model.request.RequestPlantResetData
 import com.example.ahha_android.data.model.response.ResponsePlantCreateData
-import com.example.ahha_android.data.model.response.ResponsePlantResetData
 import com.example.ahha_android.data.service.RetrofitBuilder
-import com.example.ahha_android.data.type.Plant
 import com.example.ahha_android.data.vo.SignPlantData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,8 +33,6 @@ class SignViewModel(application: Application) : AndroidViewModel(application) {
     private val _accessToken = MutableLiveData<String?>()
     val accessToken: LiveData<String?>
         get() = _accessToken
-
-    private val token = "Bearer ${EasyPeasySharedPreference.getAccessToken()}"
 
     fun loginUser(authCode: String?, pushToken: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
