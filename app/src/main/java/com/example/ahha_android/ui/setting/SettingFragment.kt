@@ -5,23 +5,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.ahha_android.R
 import com.example.ahha_android.databinding.FragmentSettingBinding
-import com.example.ahha_android.ui.viewmodel.EditPlantViewModel
 import com.example.ahha_android.ui.viewmodel.SettingViewModel
 import com.example.ahha_android.util.setStatusBarColor
+import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 class SettingFragment : Fragment() {
     private lateinit var binding: FragmentSettingBinding
-    private val viewModel: SettingViewModel by viewModels()
-    lateinit var navController: NavController
-    private var notificationOn: Boolean = true
-    private var notificationString: String = "YES"
+    private val viewModel: SettingViewModel by activityViewModels()
+    private lateinit var navController: NavController
+    private var notificationInfo: String = "NO"
+    private var notificationLimit by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,36 +37,39 @@ class SettingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
+        setNotificationOption()
         getNotificationOption()
-        initClickListener()
     }
 
-
-    private fun getNotificationOption(){
-        binding.switchInfoNotification.setOnClickListener {
-            notificationOn = !notificationOn
-
-            if(notificationOn){
-                notificationString = "YES"
-                Log.d("***************checked", notificationString)
-            }else{
-                notificationString = "NO"
-                Log.d("***************checked", notificationString)
+    private fun setNotificationOption() {
+        lifecycleScope.launch {
+            viewModel.apply {
+                fetchUser()
             }
         }
+
+        binding.switchInfoNotification.isChecked = viewModel.notificationInfo.value == "YES"
     }
 
-    private fun initClickListener(){
-        binding.linearLayoutMailNotificationMenu.setOnClickListener{
-            Log.d("*********notificationOn",notificationString)
-
-            val bundle = Bundle()
-            bundle.putString("notificationString", notificationString)
-
-            navController.navigate(
-                R.id.actionSettingFragmentToSettingNotificationFragment,
-                bundle
-            )
+    private fun getNotificationOption() {
+        binding.switchInfoNotification.setOnCheckedChangeListener{ buttonView, isChecked ->
+            if(isChecked){
+                notificationInfo = "YES"
+                sendToServer()
+            } else {
+                notificationInfo = "NO"
+                sendToServer()
+            }
         }
+
+    }
+
+    private fun sendToServer() {
+        notificationLimit = viewModel.notificationLimit.value!!
+
+        viewModel.changeNotificationSetting(notificationInfo, notificationLimit)
+        Log.d("InfoON", notificationInfo)
+        Log.d("MailLimit", notificationLimit.toString())
+
     }
 }
