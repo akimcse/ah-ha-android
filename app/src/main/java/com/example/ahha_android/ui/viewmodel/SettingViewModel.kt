@@ -51,6 +51,10 @@ class SettingViewModel : ViewModel() {
         _notificationCount.value = 1
     }
 
+    fun setNotificationCount(){
+        _notificationCount.value = _notificationLimit.value
+    }
+
     fun increaseNotificationCount() {
         _notificationCount.value = _notificationCount.value?.plus(10)
     }

@@ -20,7 +20,7 @@ class SettingNotificationFragment : Fragment() {
     private lateinit var binding: FragmentSettingNotificationBinding
     private val viewModel: SettingViewModel by activityViewModels()
     var notificationOn: Boolean = true
-    var notificationLimit = 1
+    private var notificationLimit = 1
     private lateinit var notificationInfo: String
 
     override fun onCreateView(
@@ -80,5 +80,7 @@ class SettingNotificationFragment : Fragment() {
             Log.d("*********notificationOn", notificationInfo)
             Log.d("******notificationLimit", notificationLimit.toString())
         }
+
+        viewModel.setNotificationCount()
     }
 }
