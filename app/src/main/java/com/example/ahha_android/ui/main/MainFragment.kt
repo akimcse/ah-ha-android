@@ -91,7 +91,7 @@ class MainFragment : Fragment() {
     private fun allGrownUp() {
         viewModel.plantScore.observe(viewLifecycleOwner) {
             Log.d("***************Score", it.toString())
-            if (it >= 25) {
+            if (it >= 100) {
                 showDialog()
             }
         }
