@@ -7,12 +7,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.ahha_android.data.EasyPeasySharedPreference
 import com.example.ahha_android.data.model.request.RequestNotificationUpdateData
 import com.example.ahha_android.data.model.response.ResponseNotificationUpdateData
+import com.example.ahha_android.data.response.UserData
 import com.example.ahha_android.data.service.RetrofitBuilder
+import com.example.ahha_android.data.type.Plant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class SettingViewModel : ViewModel() {
+    private val _userInfo = MutableLiveData<UserData>()
+
     private val _notificationCount = MutableLiveData<Int>()
     val notificationCount: LiveData<Int>
         get() = _notificationCount
@@ -20,6 +24,22 @@ class SettingViewModel : ViewModel() {
     private val _notificationSetting = MutableLiveData<ResponseNotificationUpdateData>()
     val notificationSetting: LiveData<ResponseNotificationUpdateData>
         get() = _notificationSetting
+
+    private val _notificationInfo = MutableLiveData<String>()
+    val notificationInfo: LiveData<String>
+        get() = _notificationInfo
+
+    private val _notificationLimit = MutableLiveData<Int>()
+    val notificationLimit: LiveData<Int>
+        get() = _notificationLimit
+
+    private val _notificationInfoOn = MutableLiveData<Boolean>()
+    val notificationInfoOn: LiveData<Boolean>
+        get() = _notificationInfoOn
+
+    private val _notificationMailOn = MutableLiveData<Boolean>()
+    val notificationMailOn: LiveData<Boolean>
+        get() = _notificationMailOn
 
     private val token = "Bearer ${EasyPeasySharedPreference.getAccessToken()}"
 
@@ -49,7 +69,18 @@ class SettingViewModel : ViewModel() {
         }
     }
 
-    fun changeNotificationSetting(notification: String, notificationLimit: Int) =
+    suspend fun fetchUser() {
+        try {
+            val response = RetrofitBuilder.userService.getUser(token).data
+            _userInfo.postValue(response)
+            _notificationInfo.postValue(response.notification)
+            _notificationLimit.postValue(response.notificationLimit)
+        } catch (e: HttpException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun changeNotificationSetting(notificationInfo: String, notificationLimit: Int) =
         viewModelScope.launch(
             Dispatchers.IO
         ) {
@@ -57,7 +88,7 @@ class SettingViewModel : ViewModel() {
                 _notificationSetting.postValue(
                     RetrofitBuilder.userService.editNotification(
                         token,
-                        RequestNotificationUpdateData(notification, notificationLimit)
+                        RequestNotificationUpdateData(notificationInfo, notificationLimit)
                     )
                 )
             } catch (e: HttpException) {
