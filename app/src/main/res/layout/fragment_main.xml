@@ -186,6 +186,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/progress_bar_rounded_corner"
             android:progress="@{viewModel.plantScore}"
+            android:max="100"
             android:progressDrawable="@drawable/progress_bar_rounded_corner"
             app:layout_constraintTop_toBottomOf="@id/TextViewInfo" />
 
